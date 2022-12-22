@@ -1,0 +1,65 @@
+<ion-header  ion-no-border >
+  <ion-toolbar class="cardheaderhome">
+    <!-- <ion-buttons slot="start">
+      <ion-menu-button *ngIf="identity"></ion-menu-button>
+    </ion-buttons> -->
+    <ion-title class="ion-text-center">
+      {{title}}
+    </ion-title>
+    <div style="text-align: center;"> {{subtitle}} </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding" >
+
+  <div class="logods " > 
+    <!-- <ion-img  src="../../assets/icon/logoinsaoficial.png"></ion-img> -->
+    <ion-img  src="../../assets/icon/logocamu.png"></ion-img>
+  </div>  
+
+ <p class="ion-text-center"> 
+  <ion-chip color="danger"  *ngIf="mensaje" >
+    <ion-icon name="close"></ion-icon>
+    <ion-label>{{mensaje}}</ion-label>
+  </ion-chip>
+</p>
+  <form #loginForm="ngForm" (ngSubmit)= "onSubmit(loginForm)">
+    <ion-item transparent>
+      <ion-icon name="person-circle" style="margin-right: 10px;" size="large"></ion-icon>
+      <ion-input placeholder="Usuario"  ngModel type="email" name="email" #email="ngModel" [(ngModel)] ="admin.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  ></ion-input>
+    </ion-item>
+
+    <ion-item transparent>
+      <ion-icon name="lock-closed" size="large" style="margin-right: 10px;"></ion-icon>
+      <ion-input placeholder="Password" type="password" name="password" required #password="ngModel" [(ngModel)] ="admin.password"   ></ion-input>
+    </ion-item>
+    
+    <div linespace></div>
+
+    <!-- <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input placeholder="Usuario"  ngModel type="email" name="email" #email="ngModel" [(ngModel)] ="admin.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  ></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" name="password" required #password="ngModel" [(ngModel)] ="admin.password" placeholder="Password"   ></ion-input>
+    </ion-item>
+  
+   -->
+  
+    <ion-button type="submit" expand="block" fill="solid" shape="round">
+      <ion-icon slot="end" name="log-in-outline"></ion-icon>
+      Iniciar Sesión
+    </ion-button>
+  </form>
+ 
+</ion-content>
+<ion-footer  ion-no-border>
+  <ion-toolbar class="cardheaderhome">
+    <ion-card-subtitle color="white" class="ion-text-center"> &#169; Derechos Reservados</ion-card-subtitle>
+    <ion-card-subtitle color="white" class="ion-text-center"> By Couder</ion-card-subtitle>
+    <ion-img class="couder bottomright"  src="../../assets/icon/coud.png"></ion-img>
+  </ion-toolbar>
+</ion-footer>

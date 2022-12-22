@@ -1,0 +1,41 @@
+
+ion-toolbar{
+//  --background: linear-gradient(to right, #009999, #0099bb, #0093d6, #7187de, #b672cb, #cb69c2, #de5fb5, #ef54a5, #ed55b8, #e859cd, #de5fe2, #cf68f8);
+ //--background:  linear-gradient(to bottom, #009999, #0099bb, #0093d6, #7187de, #b672cb, #cb69c2, #de5fb5, #ef54a5, #ed55b8, #e859cd, #de5fe2, #cf68f8);
+// --background:  linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+ --background:  linear-gradient(to right,#000f0a, #041711, #081d16, #09231a, #09291e);  
+ color: white;
+
+}
+
+.cardheaderhome{
+  --background:  linear-gradient(to right,#000f0a, #041711, #081d16, #09231a, #09291e);  
+  color: white;
+}
+
+ion-icon {
+  margin-right: 10px;
+}
+
+.badgeCitos {
+  --background:  linear-gradient(to right, #035959, #036868, #027878, #018888, #009999);
+  color: white;
+}
+
+.badgeDet {
+  --background: linear-gradient(to right, #c81f70, #d13077, #da3e7f, #e34b86, #ec578e);
+color: white;
+}
+
+.badgeColpos {
+  --background:linear-gradient(to right, #702d8b, #873ba5, #9e4ac0, #b659dc, #cf68f8);
+color: white;;
+}
+
+ion-spinner {
+  display: block;
+  margin: auto;
+  transform: scale(5);
+  color:#081d16;
+
+}

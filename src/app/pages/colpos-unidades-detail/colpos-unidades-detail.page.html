@@ -1,0 +1,300 @@
+<ion-header  translucent>
+  <ion-toolbar class="colposcolor">
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+      <ion-back-button  defaultHref="/colpos-unidades"></ion-back-button>
+    </ion-buttons>
+    <ion-title >
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-spinner name = "bubbles" color="success" class="loading" *ngIf="loading"></ion-spinner>
+<p class="ion-text-center"> {{mensaje}} </p>
+
+<ion-content fullscreen="true" *ngIf="!loading">
+  <div>
+    <!-- INFORMACION GENERAL -->
+    <ion-card>
+      <ion-card-header class="cardheaderscolpos">
+        <ion-card-title class="ion-text-center title">Información General Colposcopia</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>Pacientes en Clinica de Colposcopia:</ion-label>
+            <ion-badge color="tertiary"> {{numColpos}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Pacientes 1 Vez:</ion-label>
+            <ion-badge color="success"> {{pac1vezTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Pacientes Subsecuentes:</ion-label>
+            <ion-badge color="warning"> {{pacsubsTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Referidas por Citologia:</ion-label>
+            <ion-badge color="medium"> {{refxcitoTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Referidas por VPH:</ion-label>
+            <ion-badge color="medium"> {{refxvphTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Pacientes Activas:</ion-label>
+            <ion-badge color="warning"> {{pacactivasTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Altas:</ion-label>
+            <ion-badge color="success"> {{altasTotal}} </ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- DX DE REFERENCIA -->
+    <ion-card>
+      <ion-card-header class="cardheaderscolpos">
+        <ion-card-title class="ion-text-center title">Dx De Referencia</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>ASC-US:</ion-label>
+            <ion-badge color="warning"> {{ascusTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>ASC-H: </ion-label>
+            <ion-badge color="warning"> {{aschTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>VPH,displasia leve,NIC 1:</ion-label>
+            <ion-badge color="warning"> {{vphTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Displasia moderada,displasia severa,carcicoma in Situ,NIC2,NIC3:</ion-label>
+            <ion-badge color="warning"> {{dismodTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Carcinoma epidermoide:</ion-label>
+            <ion-badge color="danger"> {{carepiTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Células glandulares endocervicales atípicas (AGC):</ion-label>
+            <ion-badge color="warning"> {{celendocervicalTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Células glandulares endometriales atípicas (AGC):</ion-label>
+            <ion-badge color="warning"> {{celendometrialTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Células glandulares atípicas (AGC):</ion-label>
+            <ion-badge color="warning"> {{celglanatipicasTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adenocarcinoma endocervical in situ:</ion-label>
+            <ion-badge color="danger"> {{adenoinsituTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adenocarcinoma (endocervical, endometrial o extrauterino):</ion-label>
+            <ion-badge color="danger"> {{adenoendoTotal}} </ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- DX COLPOSCOPICO -->
+    <ion-card>
+      <ion-card-header class="cardheaderscolpos">
+        <ion-card-title class="ion-text-center title">Dx Colposcopico</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>Sin Alteraciones:</ion-label>
+            <ion-badge color="success"> {{sinalteracionesTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Alt. inflamatorias Inespecificas: </ion-label>
+            <ion-badge color="warning"> {{alteracionesinflaTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>LEIBG + VPH:</ion-label>
+            <ion-badge color="warning"> {{libgTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>LIAG:</ion-label>
+            <ion-badge color="warning"> {{liagTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Lesiones Sug. de inv. Neoplasia invasora:</ion-label>
+            <ion-badge color="warning"> {{lecsugestivasTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Cancer Invasor:</ion-label>
+            <ion-badge color="danger"> {{caninvasorTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Otros Hallazgos:</ion-label>
+            <ion-badge color="medium"> {{otrosTotal}} </ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- PROCEDIMIENTOS COLPOS -->
+    <ion-card>
+      <ion-card-header class="cardheaderscolpos">
+        <ion-card-title class="ion-text-center title">Procedimientos</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>Biopsias:</ion-label>
+            <ion-badge color="tertiary"> {{bxTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Conos: </ion-label>
+            <ion-badge color="tertiary"> {{conosTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Electrofulguración:</ion-label>
+            <ion-badge color="warning"> {{electroTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>LEC:</ion-label>
+            <ion-badge color="warning"> {{lecTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Citologia de Control:</ion-label>
+            <ion-badge color="medium"> {{citocontrolTotal}} </ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <!-- DX HISTOLOGICOS -->
+    <ion-card>
+      <ion-card-header class="cardheaderscolpos">
+        <ion-card-title class="ion-text-center title">DX Histopatologico</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>Insuficiente o inadecuado para DX:</ion-label>
+            <ion-badge color="medium"> {{inadecDxTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Tejido de cervix normal:</ion-label>
+            <ion-badge color="success"> {{cervixnormalTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>VPH,NIC1 o displacia leve:</ion-label>
+            <ion-badge color="warning"> {{vphnicTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>NIC2 o dsiplacia moderada:</ion-label>
+            <ion-badge color="warning"> {{dislpaciamoderardaTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>NIC3 o displacia leve y cancer in situ:</ion-label>
+            <ion-badge color="warning"> {{displacialeveTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Cancer micro invasor:</ion-label>
+            <ion-badge color="warning"> {{cancermicroinvasorTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Cancer invasor:</ion-label>
+            <ion-badge color="danger"> {{cancerinvasorTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adenocarcinoma Endocervical in situ:</ion-label>
+            <ion-badge color="danger"> {{adenoinsituTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adenocarcinoma Endocervical invasor:</ion-label>
+            <ion-badge color="danger"> {{adenoinvasorTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adenocarcinoma Endometrial invasor:</ion-label>
+            <ion-badge color="danger"> {{adenoendometrialinvasortotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Sarcoma:</ion-label>
+            <ion-badge color="danger"> {{sarcomaTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Tumor maligno no especicicado:</ion-label>
+            <ion-badge color="danger"> {{tumormalignoTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Otro:</ion-label>
+            <ion-badge color="medium"> {{otrohistoTotla}} </ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- DX CITOLOGICOS DE CONTROL -->
+    <ion-card>
+      <ion-card-header class="cardheaderscolpos">
+        <ion-card-title class="ion-text-center title">DX Citoloigas de Control</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>Negativa para lesión intraepitelial:</ion-label>
+            <ion-badge color="success"> {{citoNegativaTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>ASC-US:</ion-label>
+            <ion-badge color="warning"> {{citoAscusTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>ASC-H:</ion-label>
+            <ion-badge color="warning"> {{aschTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>VPH, displasia leve, NIC 1:</ion-label>
+            <ion-badge color="warning"> {{citoVphTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Displasia moderada,displasia severa,carcicoma in Situ,NIC2,NIC3:</ion-label>
+            <ion-badge color="warning"> {{citodispModeradaTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Carcinoma epidermoide:</ion-label>
+            <ion-badge color="danger"> {{citocarcinomaEpidermoideTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Células glandulares endocervicales atípicas (AGC):</ion-label>
+            <ion-badge color="warning"> {{citoEndocervicalesTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Células glandulares endometriales atípicas (AGC):</ion-label>
+            <ion-badge color="warning"> {{citoEndometrialesTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Células glandulares atípicas (AGC):</ion-label>
+            <ion-badge color="warning"> {{citoglandulasAtipicasTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adenocarcinoma endocervical in situ:</ion-label>
+            <ion-badge color="danger"> {{citoadenoInsituTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Adenocarcinoma (endocervical,endometrial o extrauterino):</ion-label>
+            <ion-badge color="danger"> {{citoadenoExtraTotal}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Inadecuada:</ion-label>
+            <ion-badge color="medium"> {{citoInadecuadaTotal}} </ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

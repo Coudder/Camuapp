@@ -1,0 +1,176 @@
+<ion-header  translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+      <ion-back-button  defaultHref="/detecmama-pacientes" ></ion-back-button>
+    </ion-buttons>
+    <ion-title >
+     {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-spinner *ngIf="loading" color="success" name="bubbles" ></ion-spinner>
+
+
+<ion-content fullscreen *ngIf="!loading">
+
+  <div *ngFor="let pac of paciente">
+    <!-- informacion general -->
+      <ion-card >
+        <ion-card-header  class="ion-text-center" class="cardheaderdet"  >
+         
+          <ion-card-title >
+             <ion-item color="item">
+              <ion-icon name="person" size="large" class="titulo" ></ion-icon> 
+              <ion-label class="ion-text-center titulo bold">
+              <h3>  {{pac.nombre}} </h3> 
+              </ion-label>
+    
+             </ion-item>
+               
+              
+            </ion-card-title>
+        </ion-card-header>
+    
+        <ion-card-content>
+           <ion-grid  >
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle >
+              <ion-text color="dark bold"> FECHA DE NACIMIENTO:       </ion-text>
+              <ion-text color="dark ">  {{pac.fNac}} </ion-text>  
+              </ion-card-subtitle>  
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+              <ion-text color="dark bold"> EDAD:  </ion-text>
+              <ion-text color="dark">   {{pac.edad}} años  </ion-text>    
+              </ion-card-subtitle>  
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+              <ion-text color="dark bold"> UNIDAD MEDICA:  </ion-text> 
+              <ion-text color="dark">   {{pac.unidadMedica}}  </ion-text>
+               </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+                <ion-text color="dark bold"> CLAVE SICAM:  </ion-text>
+                <ion-text color="dark">   {{pac.sicam}}  </ion-text>
+              </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    
+    
+    
+      </ion-card>
+    <!-- informacion de la expl de mama -->
+      <ion-card >
+        <ion-card-header  class="ion-text-center cardheaderdet"  >
+          <ion-card-title>
+            <ion-item  class="cardheaderdet">
+              <ion-icon color="white" name="document-text" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold">
+              <h3>  INFORME EXPL. MAMA </h3> 
+              </ion-label>
+    
+             </ion-item>  
+          </ion-card-title>
+        </ion-card-header>
+    
+        <ion-card-content>
+           <ion-grid  >
+            <ion-row>
+              <ion-col>
+                <ion-card-subtitle>
+                <ion-text color="dark bold"> FECHA DE TOMA:  </ion-text> 
+                <ion-text color="dark">   {{pac.fAtencion}}  </ion-text>
+                 </ion-card-subtitle>
+              </ion-col>
+            </ion-row> 
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle >
+              <ion-text color="dark bold"> FECHA DE CAPTURA:       </ion-text>
+              <ion-text color="dark ">  {{pac.fCaptura}} </ion-text>  
+              </ion-card-subtitle>  
+            </ion-col>
+          </ion-row>
+          
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+              <ion-text color="dark bold"> SIGNOS:  </ion-text>
+              <ion-text color="dark">   {{pac.signos}}   </ion-text>    
+              </ion-card-subtitle>  
+            </ion-col>
+          </ion-row>
+         
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+                <ion-text color="dark bold"> CONDUCTA:  </ion-text>
+                <ion-text color="dark">   {{pac.conducta}}  </ion-text>
+              </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="pac.fUsm != ''">
+            <ion-col>
+              <ion-card-subtitle>
+              <ion-text color="dark bold"> FECHA USM:</ion-text>  
+              <ion-text color="dark">   {{pac.fUsm}}</ion-text>   
+              </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="pac.resultUsm != ''">
+            <ion-col>
+              <ion-card-subtitle>
+              <ion-text color="dark bold"> RESULTADO USM:</ion-text>  
+              <ion-text color="dark">   {{pac.resultUsm}}</ion-text>   
+              </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          
+         
+        </ion-grid>
+      </ion-card-content>
+      </ion-card>
+
+      <!-- observaciones -->
+      <ion-card *ngIf="pac.observ != ''">
+        <ion-card-header color="medium" class="ion-text-center"  >
+          <ion-card-title>
+            <ion-item color="medium" class="item">
+              <ion-icon name="pencil" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold">
+              <h3>  OBSERVACIONES </h3> 
+              </ion-label>
+             </ion-item>  
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+           <ion-grid  >
+            <ion-row>
+              <ion-col>
+                <ion-card-subtitle>
+                <ion-text color="dark">   {{pac.observ}}  </ion-text>
+                 </ion-card-subtitle>
+              </ion-col>
+            </ion-row> 
+         
+        </ion-grid>
+      </ion-card-content>
+      </ion-card>
+  
+
+  </div>
+</ion-content>

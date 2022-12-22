@@ -1,0 +1,527 @@
+<ion-header  translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+      <ion-back-button  defaultHref="/colpos-pacientes" ></ion-back-button>
+    </ion-buttons>
+    <ion-title >
+     {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-spinner *ngIf="loading" color="success" name="bubbles" ></ion-spinner>
+
+<ion-content fullscreen="true" *ngIf="!loading">
+ <div *ngFor="let pac of paciente">
+   <!-- mostramos informacion genearl del paciente -->
+    <ion-card>
+       <ion-card-header class="ion-text-center cardheaderscolpos">
+          <ion-card-title>
+            <ion-item class="cardheaderscolpos" >
+              <ion-icon name="person" class="person" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold">
+                <h3> {{pac.nombre}} </h3>
+              </ion-label>
+            </ion-item>
+          </ion-card-title>
+       </ion-card-header>
+       <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+                <ion-text color="dark bold">FECHA DE NACIMIENTO: </ion-text>
+                <ion-text color="dark"> {{pac.fNac}} </ion-text>
+              </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+                <ion-text color="dark bold">EDAD: </ion-text>
+                <ion-text color="dark"> {{pac.edad}} años</ion-text>
+              </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+                <ion-text color="dark bold">CURP: </ion-text>
+                <ion-text color="dark"> {{pac.curp}}</ion-text>
+              </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+                <ion-text color="dark bold">SICAM: </ion-text>
+                <ion-text color="dark"> {{pac.sicam}}</ion-text>
+              </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+                <ion-text color="dark bold">UNIDAD MEDICA: </ion-text>
+                <ion-text color="dark"> {{pac.unidadMedica}}</ion-text>
+              </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="pac.municipio != ''">
+            <ion-col>
+                <ion-card-subtitle >
+                  <ion-text color="dark bold" >MUNICIPIO: </ion-text>
+                  <ion-text color="dark"> {{pac.municipio}} </ion-text>
+                </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="pac.localidad != ''">
+            <ion-col>
+                <ion-card-subtitle >
+                  <ion-text color="dark bold" >LOCALIDAD: </ion-text>
+                  <ion-text color="dark"> {{pac.localidad}} </ion-text>
+                </ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <!-- END INFORMACION GENERAL -->
+    <!-- INFORMACION DE REFERENCIA A COLPOSCOPIA -->
+    <ion-card>
+      <ion-card-header class="ion-text-center cardheaderscolpos">
+         <ion-card-title>
+           <ion-item class="cardheaderscolpos">
+             <ion-icon name="document-attach" class="person" size="large"></ion-icon>
+             <ion-label class="ion-text-center bold">
+               <h3> INF. REFERENCIA A COLPOSCOPIA </h3>
+             </ion-label>
+           </ion-item>
+         </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+       <ion-grid>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">REFERIDA POR: </ion-text>
+               <ion-text color="dark"> {{pac.referidaPor}} </ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">DX DE REFERENCIA: </ion-text>
+               <ion-text color="dark"> {{pac.dxReferencia}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">STATUS: </ion-text>
+               <ion-text color="dark"> {{pac.status}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">ALTA: </ion-text>
+               <ion-text color="dark"> {{pac.alta}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row *ngIf="pac.fechaAlta != ''">
+           <ion-col >
+             <ion-card-subtitle>
+               <ion-text color="dark bold">FECHA DE ALTA: </ion-text>
+               <ion-text color="dark"> {{pac.fechaAlta}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row *ngIf="pac.referencia  != ''" >
+           <ion-col>
+               <ion-card-subtitle>
+                 <ion-text color="dark bold" >REFERENCIA: </ion-text>
+                 <ion-text color="dark"> {{pac.referencia}} </ion-text>
+               </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </ion-card-content>
+   </ion-card>
+    <!-- INFORMACION DE REFERENCIA A COLPOSCOPIA -->
+
+    <!-- PRIMER CITA A COLPOSCOPIA -->
+    <ion-card *ngIf="pac.asistioprimerCita != ''">
+      <ion-card-header class="ion-text-center " color="medium">
+         <ion-card-title>
+           <ion-item color="medium">
+             <ion-icon name="document-text" class="person" size="large"></ion-icon>
+             <ion-label class="ion-text-center bold">
+               <h3> PRIMER CITA A COLPOSCOPIA </h3>
+             </ion-label>
+           </ion-item>
+         </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+       <ion-grid>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">F.ATENCION: </ion-text>
+               <ion-text color="dark"> {{pac.fAtencion}} </ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">ASISTIO: </ion-text>
+               <ion-text color="dark"> {{pac.asistioprimerCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">DX COLPOS: </ion-text>
+               <ion-text color="dark"> {{pac.dxcolposprimerCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">PROCEDIMIENTO: </ion-text>
+               <ion-text color="dark"> {{pac.procedprimerCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row >
+           <ion-col >
+             <ion-card-subtitle>
+               <ion-text color="dark bold">DX HISTOPATOLOGICO: </ion-text>
+               <ion-text color="dark"> {{pac.dxhistoprimerCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+               <ion-card-subtitle>
+                 <ion-text color="dark bold" >PROXIMA CITA: </ion-text>
+                 <ion-text color="dark"> {{pac.fproxcitaSegunda}} </ion-text>
+               </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </ion-card-content>
+    </ion-card>
+    <!-- PRIMER CITA A COLPOSCOPIA -->
+
+    <!-- SEGUNDA CITA A COLPOSCOPIA -->
+     <ion-card *ngIf="pac.asistiosegundaCita != ''">
+      <ion-card-header class="ion-text-center" color="medium">
+         <ion-card-title>
+           <ion-item color="medium">
+             <ion-icon name="document-text" class="person" size="large"></ion-icon>
+             <ion-label class="ion-text-center bold">
+               <h3> SEGUNDA CITA A COLPOSCOPIA </h3>
+             </ion-label>
+           </ion-item>
+         </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+       <ion-grid>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">F.ATENCION: </ion-text>
+               <ion-text color="dark"> {{pac.fatencionsegundaCita}} </ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">ASISTIO: </ion-text>
+               <ion-text color="dark"> {{pac.asistiosegundaCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">DX COLPOS: </ion-text>
+               <ion-text color="dark"> {{pac.dxcolpossegundaCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">PROCEDIMIENTO: </ion-text>
+               <ion-text color="dark"> {{pac.procedsegundaCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row >
+           <ion-col >
+             <ion-card-subtitle>
+               <ion-text color="dark bold">DX HISTOPATOLOGICO: </ion-text>
+               <ion-text color="dark"> {{pac.dxhistosegundaCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+               <ion-card-subtitle>
+                 <ion-text color="dark bold" >PROXIMA CITA: </ion-text>
+                 <ion-text color="dark"> {{pac.fproxcitaTercera}} </ion-text>
+               </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </ion-card-content>
+     </ion-card>
+    <!-- SEGUNDA CITA A COLPOSCOPIA -->
+
+
+    <!-- TERCER CITA A COLPOSCOPIA -->
+    <ion-card *ngIf="pac.asistiotercerCita != ''">
+      <ion-card-header class="ion-text-center" color="medium">
+         <ion-card-title>
+           <ion-item color="medium">
+             <ion-icon name="document-text" class="person" size="large"></ion-icon>
+             <ion-label class="ion-text-center bold">
+               <h3> TERCER CITA A COLPOSCOPIA </h3>
+             </ion-label>
+           </ion-item>
+         </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+       <ion-grid>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">F.ATENCION: </ion-text>
+               <ion-text color="dark"> {{pac.fatenciontercerCita}} </ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">ASISTIO: </ion-text>
+               <ion-text color="dark"> {{pac.asistiotercerCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">DX COLPOS: </ion-text>
+               <ion-text color="dark"> {{pac.dxcolpostercerCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">PROCEDIMIENTO: </ion-text>
+               <ion-text color="dark"> {{pac.procedtercerCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row >
+           <ion-col >
+             <ion-card-subtitle>
+               <ion-text color="dark bold">DX HISTOPATOLOGICO: </ion-text>
+               <ion-text color="dark"> {{pac.dxhistotercerCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+               <ion-card-subtitle>
+                 <ion-text color="dark bold" >PROXIMA CITA: </ion-text>
+                 <ion-text color="dark"> {{pac.fproxcitaCuarta}} </ion-text>
+               </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </ion-card-content>
+     </ion-card>
+    <!-- TERCER CITA A COLPOSCOPIA -->
+
+
+     <!-- CUARTA CITA A COLPOSCOPIA -->
+     <ion-card *ngIf="pac.asistiocuartaCita != ''">
+      <ion-card-header class="ion-text-center" color="medium">
+         <ion-card-title>
+           <ion-item color="medium">
+             <ion-icon name="document-text" class="person" size="large"></ion-icon>
+             <ion-label class="ion-text-center bold">
+               <h3> CUARTA CITA A COLPOSCOPIA </h3>
+             </ion-label>
+           </ion-item>
+         </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+       <ion-grid>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">F.ATENCION: </ion-text>
+               <ion-text color="dark"> {{pac.fatencioncuartaCita}} </ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">ASISTIO: </ion-text>
+               <ion-text color="dark"> {{pac.asistiocuartaCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">DX COLPOS: </ion-text>
+               <ion-text color="dark"> {{pac.dxcolposcuartaCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+             <ion-card-subtitle>
+               <ion-text color="dark bold">PROCEDIMIENTO: </ion-text>
+               <ion-text color="dark"> {{pac.procedcuartaCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row >
+           <ion-col >
+             <ion-card-subtitle>
+               <ion-text color="dark bold">DX HISTOPATOLOGICO: </ion-text>
+               <ion-text color="dark"> {{pac.dxhistocuartaCita}}</ion-text>
+             </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+               <ion-card-subtitle>
+                 <ion-text color="dark bold" >PROXIMA CITA: </ion-text>
+                 <ion-text color="dark"> {{pac.fproxcitaQuinta}} </ion-text>
+               </ion-card-subtitle>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </ion-card-content>
+     </ion-card>
+    <!-- CUARTA CITA A COLPOSCOPIA -->
+
+      <!-- QUINTA CITA A COLPOSCOPIA -->
+      <ion-card *ngIf="pac.asistioquintaCita != ''">
+        <ion-card-header class="ion-text-center" color="medium">
+           <ion-card-title>
+             <ion-item color="medium">
+               <ion-icon name="document-text" class="person" size="large"></ion-icon>
+               <ion-label class="ion-text-center bold">
+                 <h3> QUINTA CITA A COLPOSCOPIA </h3>
+               </ion-label>
+             </ion-item>
+           </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+         <ion-grid>
+           <ion-row>
+             <ion-col>
+               <ion-card-subtitle>
+                 <ion-text color="dark bold">F.ATENCION: </ion-text>
+                 <ion-text color="dark"> {{pac.fatencionquintaCita}} </ion-text>
+               </ion-card-subtitle>
+             </ion-col>
+           </ion-row>
+           <ion-row>
+             <ion-col>
+               <ion-card-subtitle>
+                 <ion-text color="dark bold">ASISTIO: </ion-text>
+                 <ion-text color="dark"> {{pac.asistioquintaCita}}</ion-text>
+               </ion-card-subtitle>
+             </ion-col>
+           </ion-row>
+           <ion-row>
+             <ion-col>
+               <ion-card-subtitle>
+                 <ion-text color="dark bold">DX COLPOS: </ion-text>
+                 <ion-text color="dark"> {{pac.dxcolposquintaCita}}</ion-text>
+               </ion-card-subtitle>
+             </ion-col>
+           </ion-row>
+           <ion-row>
+             <ion-col>
+               <ion-card-subtitle>
+                 <ion-text color="dark bold">PROCEDIMIENTO: </ion-text>
+                 <ion-text color="dark"> {{pac.procedquintaCita}}</ion-text>
+               </ion-card-subtitle>
+             </ion-col>
+           </ion-row>
+           <ion-row >
+             <ion-col >
+               <ion-card-subtitle>
+                 <ion-text color="dark bold">DX HISTOPATOLOGICO: </ion-text>
+                 <ion-text color="dark"> {{pac.dxhistoquintaCita}}</ion-text>
+               </ion-card-subtitle>
+             </ion-col>
+           </ion-row>
+           <!-- <ion-row>
+             <ion-col>
+                 <ion-card-subtitle>
+                   <ion-text color="dark bold" >PROXIMA CITA: </ion-text>
+                   <ion-text color="dark"> {{pac.fproxcitaQuinta}} </ion-text>
+                 </ion-card-subtitle>
+             </ion-col>
+           </ion-row> -->
+         </ion-grid>
+       </ion-card-content>
+       </ion-card>
+      <!-- QUINTA CITA A COLPOSCOPIA -->
+
+       <!-- OBSERVACIONES COLPOSCOPIA -->
+       <ion-card *ngIf="pac.observaciones != ''">
+        <ion-card-header class="ion-text-center" color="medium">
+           <ion-card-title>
+             <ion-item color="medium">
+               <ion-icon name="pencil" class="person" size="large"></ion-icon>
+               <ion-label class="ion-text-center bold">
+                 <h3> OBSERVACIONES </h3>
+               </ion-label>
+             </ion-item>
+           </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+         <ion-grid>
+           <ion-row>
+             <ion-col>
+               <ion-card-subtitle>
+                 
+                 <ion-text color="dark bold"> {{pac.observaciones}} </ion-text>
+               </ion-card-subtitle>
+             </ion-col>
+           </ion-row>
+         </ion-grid>
+       </ion-card-content>
+       </ion-card>
+      <!-- OBSERVACIONES CITA A COLPOSCOPIA -->
+
+
+ </div>
+ 
+ 
+ 
+</ion-content>

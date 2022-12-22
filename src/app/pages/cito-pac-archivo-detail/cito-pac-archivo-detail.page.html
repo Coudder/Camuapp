@@ -1,0 +1,227 @@
+<ion-header  translucent>
+  <ion-toolbar class="citocolor">
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+      <ion-back-button  defaultHref="/cito-pac-archivo" ></ion-back-button>
+    </ion-buttons>
+    <ion-title >
+     {{title}}
+    </ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-spinner *ngIf="loading" name="bubbles" color="success" ></ion-spinner>
+<ion-content fullscreen *ngIf="!loading">
+
+  <div *ngFor="let pac of paciente">
+    <!-- DATOS GENERALES DEL PACIENTE -->
+    <ion-card >
+      <ion-card-header  class="ion-text-center cardheaderscito"   >
+       
+        <ion-card-title >
+           <ion-item color="item">
+            <ion-icon name="person" size="large" class="titulo" ></ion-icon> 
+            <ion-label class="ion-text-center titulo bold">
+            <h3>  {{pac.nombre}} </h3> 
+            </ion-label>
+  
+           </ion-item>
+             
+            
+          </ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+         <ion-grid >
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle >
+            <ion-text color="dark bold"> FECHA DE NACIMIENTO:       </ion-text>
+            <ion-text color="dark ">  {{pac.fNac}} </ion-text>  
+            </ion-card-subtitle>  
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> EDAD:  </ion-text>
+            <ion-text color="dark">   {{pac.edad}}   </ion-text>    
+            </ion-card-subtitle>  
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> UNIDAD MEDICA:  </ion-text> 
+            <ion-text color="dark">   {{pac.unidadMedica}}  </ion-text>
+             </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+              <ion-text color="dark bold"> CLAVE SICAM:  </ion-text>
+              <ion-text color="dark">   {{pac.sicam}}  </ion-text>
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+    </ion-card>
+  <!-- RESULTADO DE CITOLOGIA -->
+    <ion-card >
+      <ion-card-header  class="ion-text-center cardheaderscito"  >
+        <ion-card-title>
+          <ion-item class="cardheaderscito">
+            <ion-icon class="icontoolbar" name="document-text" size="large"></ion-icon>
+            <ion-label class="ion-text-center bold">
+            <h3>  RESULTADO CITOLOGIA </h3> 
+            </ion-label>
+  
+           </ion-item>  
+        </ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+         <ion-grid  >
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+              <ion-text color="dark bold"> CITOLOGIA:  </ion-text> 
+              <ion-text color="dark">   {{pac.citologia}}  </ion-text>
+               </ion-card-subtitle>
+            </ion-col>
+          </ion-row> 
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle >
+            <ion-text color="dark bold"> FECHA DE TOMA:       </ion-text>
+            <ion-text color="dark ">  {{pac.fToma}} </ion-text>  
+            </ion-card-subtitle>  
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> FECHA DE INTERPRETACION:  </ion-text>
+            <ion-text color="dark">   {{pac.fIinterpretacion}}   </ion-text>    
+            </ion-card-subtitle>  
+          </ion-col>
+        </ion-row>
+       
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+              <ion-text color="dark bold"> DX CITOLOGICO:  </ion-text>
+              <ion-text color="dark">   {{pac.refdxCito}}  </ion-text>
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> OTROS CITOLOGICO:</ion-text>  
+            <ion-text color="dark">   {{pac.refotrosHallazgos}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="pac.refdxPato != ''">
+          <ion-col >
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> DX PATOLOGICO:</ion-text>  
+            <ion-text color="dark">   {{pac.refdxPato}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="pac.referencia != ''">
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> OTROS PATOLOGICO:</ion-text>  
+            <ion-text color="dark">   {{pac.referencia}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row  *ngIf="pac.fTomaxina != ''">
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold">FECHA 2DA TOMA INADECUADA:</ion-text>  
+            <ion-text color="dark">   {{pac.fTomaxina}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="pac.refdxTomaina != ''">
+          <ion-col >
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> DX 2DA TOMA :</ion-text>  
+            <ion-text color="dark">   {{pac.refdxTomaina}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="pac.fTomaxinatres != ''">
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold">FECHA 3RA TOMA INADECUADA:</ion-text>  
+            <ion-text color="dark">   {{pac.fTomaxinatres}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="pac.refdxTomainatres != ''">
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> DX 3RA TOMA :</ion-text>  
+            <ion-text color="dark">   {{pac.refdxTomainatres}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="pac.fTomaxinacuatro != ''">
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold">FECHA 4TA TOMA INADECUADA:</ion-text>  
+            <ion-text color="dark">   {{pac.fTomaxinacuatro}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row  *ngIf="pac.refdxTomainacuatro">
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> DX 4TA TOMA :</ion-text>  
+            <ion-text color="dark">   {{pac.refdxTomainacuatro}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+    </ion-card>
+
+    <!-- OBSERVACIONES -->
+    <ion-card *ngIf="pac.observaciones != ''">
+      <ion-card-header color="medium" class="ion-text-center"  >
+        <ion-card-title>
+          <ion-item color="medium" class="item">
+            <ion-icon name="pencil" size="large"></ion-icon>
+            <ion-label class="ion-text-center bold">
+            <h2>  OBSERVACIONES </h2> 
+            </ion-label>
+           </ion-item>  
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+         <ion-grid  >
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+              <ion-text color="dark">   {{pac.observaciones}}  </ion-text>
+               </ion-card-subtitle>
+            </ion-col>
+          </ion-row> 
+       
+      </ion-grid>
+    </ion-card-content>
+    </ion-card>
+
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,183 @@
+<ion-header  translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+      <ion-back-button  defaultHref="/vphs-pacientes" ></ion-back-button>
+    </ion-buttons>
+    <ion-title >
+     {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-spinner *ngIf="loading" color="success" name="bubbles" ></ion-spinner>
+
+<ion-content fullscreen   *ngIf="!loading">
+
+  <div *ngFor="let pac of paciente ">
+    <!-- informacion general vph -->
+    <ion-card >
+      <ion-card-header  class="ion-text-center cardheaderscito ">
+       
+        <ion-card-title >
+           <ion-item color="item">
+            <ion-icon name="person" size="large" class="titulo" ></ion-icon> 
+            <ion-label class="ion-text-center titulo bold">
+            <h3>  {{pac.nombre}} </h3> 
+            </ion-label>
+  
+           </ion-item>
+             
+            
+          </ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+         <ion-grid  >
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle >
+            <ion-text color="dark bold"> FECHA DE NACIMIENTO:       </ion-text>
+            <ion-text color="dark ">  {{pac.fNac}} </ion-text>  
+            </ion-card-subtitle>  
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> EDAD:  </ion-text>
+            <ion-text color="dark">   {{pac.edad}} años  </ion-text>    
+            </ion-card-subtitle>  
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> UNIDAD MEDICA:  </ion-text> 
+            <ion-text color="dark">   {{pac.unidadMedica}}  </ion-text>
+             </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+              <ion-text color="dark bold"> CLAVE SICAM:  </ion-text>
+              <ion-text color="dark">   {{pac.sicam}}  </ion-text>
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+    </ion-card>
+  
+    <!-- informacion resultado vph -->
+    <ion-card >
+      <ion-card-header  class="ion-text-center cardheaderscito"  >
+        <ion-card-title>
+          <ion-item  class="item cardheaderscito">
+            <ion-icon color="white" name="document-text" size="large"></ion-icon>
+            <ion-label class="ion-text-center bold">
+            <h3>  RESULTADO DE VPH </h3> 
+            </ion-label>
+           </ion-item>  
+        </ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+         <ion-grid  >
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+              <ion-text color="dark bold"> VISITA:  </ion-text> 
+              <ion-text color="dark">   {{pac.visita}}  </ion-text>
+               </ion-card-subtitle>
+            </ion-col>
+          </ion-row> 
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle >
+              <ion-text color="dark bold"> CODIGO DE CAPTURA:       </ion-text>
+              <ion-text color="dark ">  {{pac.codigo}} </ion-text>  
+              </ion-card-subtitle>  
+            </ion-col>
+          </ion-row>
+          <ion-row>
+          <ion-col>
+            <ion-card-subtitle >
+            <ion-text color="dark bold"> FECHA DE TOMA:       </ion-text>
+            <ion-text color="dark ">  {{pac.fToma}} </ion-text>  
+            </ion-card-subtitle>  
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> MUESTRA:  </ion-text>
+            <ion-text color="dark">   {{pac.muestra}}   </ion-text>    
+            </ion-card-subtitle>  
+          </ion-col>
+        </ion-row>
+       
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+              <ion-text color="dark bold"> VPH:  </ion-text>
+              <ion-text color="dark">   {{pac.rVph}}  </ion-text>
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="pac.rCbl != ''">
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> CBL:</ion-text>  
+            <ion-text color="dark">   {{pac.rCbl}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="pac.otroHallazgo != ''">
+          <ion-col>
+            <ion-card-subtitle>
+            <ion-text color="dark bold"> OTROS HALLAZGOS CBL:</ion-text>  
+            <ion-text color="dark">   {{pac.otroHallazgo}}</ion-text>   
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+   
+  
+    </ion-card>
+
+
+     <!-- observaciones -->
+     <ion-card *ngIf="pac.observaciones != ''">
+      <ion-card-header color="medium" class="ion-text-center"  >
+        <ion-card-title>
+          <ion-item color="medium" class="item">
+            <ion-icon name="pencil" size="large"></ion-icon>
+            <ion-label class="ion-text-center bold">
+            <h3>  OBSERVACIONES </h3> 
+            </ion-label>
+           </ion-item>  
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+         <ion-grid  >
+          <ion-row>
+            <ion-col>
+              <ion-card-subtitle>
+              <ion-text color="dark ">   {{pac.observaciones}}  </ion-text>
+               </ion-card-subtitle>
+            </ion-col>
+          </ion-row> 
+       
+      </ion-grid>
+    </ion-card-content>
+    </ion-card>
+
+  </div>
+  
+
+</ion-content>

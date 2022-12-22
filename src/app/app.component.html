@@ -1,29 +1,79 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+  <ion-split-pane contentId="main-content" >
+    <ion-menu contentId="main-content" type="overlay"  >
+      <ion-header class="ion-no-border" >
+        <ion-toolbar>
+          <ion-title class="bold">CAMU</ion-title>
+          <ion-note>Información Cáncer de la Mujer</ion-note>
+        </ion-toolbar>
+      </ion-header>      
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
+      <ion-content  >
+        <div *ngFor="let p of pages">
+          <ion-menu-toggle auto-hide="false" *ngIf ="p.redirecTo">
+            <!-- quite el fondo en el item negro -->
+              <ion-item [routerLink]= "[p.redirecTo]" routerDirection="root" >
+                <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                <ion-label>
+                  {{p.title}}
+                </ion-label>
+              </ion-item>
 
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
+          </ion-menu-toggle >
 
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
+          <ion-item button *ngIf ="p.children?.length > 0" (click)= "p.open = !p.open"
+            [class.active-parent] ="p.open" detail="false" >
+              
+
+                <ion-icon slot="start" name="caret-forward" *ngIf = "!p.open" ></ion-icon>
+                <ion-icon slot="start" name="caret-down" *ngIf = "p.open" ></ion-icon>
+                <ion-label> {{p.title}} </ion-label>
+           
           </ion-item>
-        </ion-list>
+
+          <ion-list *ngIf ="p.open">
+            <ion-menu-toggle   >
+
+              <ion-item  *ngFor ="let sub of p.children"  [routerLink] ="[sub.reditecTo]"   class="menu-children" >
+                <ion-icon  slot="start" [name]="sub.icon"  class="submenu"></ion-icon>
+                <ion-label class="itext">
+                  {{sub.title}}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list> 
+
+        </div>
       </ion-content>
+
+      <ion-footer class="ion-no-border ion-text-center">
+        
+        <ion-toolbar color="light">
+
+          <ion-item  [routerLink]=" ['/logout/1'] " routerDirection="root" color="light">
+            <ion-icon slot="start" name="power"></ion-icon>
+            <ion-label>
+              Cerrar Sesión
+            </ion-label>
+          </ion-item>
+
+          <!-- <ion-icon class="icondev" name="code" size="small"></ion-icon>
+          <ion-icon class="icondev" name="logo-angular" size="small"></ion-icon>
+          <ion-icon class="icondev" name="logo-ionic" size="small"></ion-icon>
+          <ion-icon class="icondev" name="logo-html5" size="small"></ion-icon>
+          <ion-icon class="icondev" name="logo-css3" size="small"></ion-icon>
+          <ion-icon class="icondev" name="logo-javascript" size="small"></ion-icon> -->
+          <!-- <ion-icon class="icondev" name="logo-npm" size="small"></ion-icon><br> -->
+          <!-- <img src="../assets/icon/coudder.png" alt=""> -->
+          <ion-img class="couder"  src="../../assets/icon/coud.png"></ion-img>
+          <ion-title style="font-size: small;" class="negro">   COUDER  </ion-title>
+        </ion-toolbar>
+      </ion-footer>
+
     </ion-menu>
+
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
+  <!-- menu -->
 </ion-app>
+

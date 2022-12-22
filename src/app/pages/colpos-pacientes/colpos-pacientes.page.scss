@@ -1,0 +1,29 @@
+ion-searchbar {
+    --box-shadow: none !important;
+  }
+  
+  ion-skeleton-text {
+    border-radius: 9999px;
+    // --background: rgba(188, 0, 255, 0.065);
+    // --background-rgb: 188, 0, 255;
+  
+    --background: rgba(248, 68, 248, 0.467);
+    --background-rgb: 207, 104, 248;
+    //--background:#099;
+  }
+
+  .iconperson {
+    color:#cf68f8 ;
+    margin-right: 10px;
+
+  }
+
+  ion-toolbar{
+    //--background: linear-gradient(to right, #4b1e52, #6b2e77, #8c40a0, #ad54cb, #cf68f8);
+    --background:linear-gradient(to right, #702d8b, #873ba5, #9e4ac0, #b659dc, #cf68f8);
+    color: white;
+  }
+
+  ion-badge{
+    background-color: transparent;
+  }

@@ -1,0 +1,1030 @@
+<ion-header   translucent>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/vphs-unidades" ></ion-back-button>
+    </ion-buttons>
+    <ion-title >
+     {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-spinner name = "bubbles" color="success" class="loading" *ngIf="loading"></ion-spinner>
+<p class="ion-text-center">  </p>
+
+<ion-content fullscreen *ngIf="!loading">
+  <div>
+    <!-- slider info -->
+    <swiper [config]="swiperConfig">
+      <ng-template swiperSlide>
+          <ion-card>
+            <ion-card-header class="cardheaderscito">
+              <ion-card-title class="ion-text-center title">Información General VPH</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <ion-item>
+                  <ion-label>Total de Tomas:</ion-label>
+                  <ion-badge color="medium"> {{numVph}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Tomas de 35-64 años:</ion-label>
+                  <ion-badge color="warning"> {{vphindiedadTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs 1 Vez 35-64 años:</ion-label>
+                  <ion-badge color="success"> {{vphprimeravezTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs Subsecuentes 35-64 años:</ion-label>
+                  <ion-badge color="success"> {{vphsubsecuenteTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs 1 vez desp. 5 años 35-64 años:</ion-label>
+                  <ion-badge color="success"> {{vphprimeracincoTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs 1 Vez General:</ion-label>
+                  <ion-badge color="medium"> {{vphprimeravezgenerarTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs Subsecuentes General:</ion-label>
+                  <ion-badge color="medium"> {{vphsubsecuentegeneralTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs 1 Vez desp. 5 años General:</ion-label>
+                  <ion-badge color="medium"> {{vphprimeracincogeneralTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Pendientes de Resultado:</ion-label>
+                  <ion-badge color="warning"> {{vphsinresultadoTotal}} </ion-badge>
+                </ion-item>
+            
+              </ion-list>
+
+            </ion-card-content>
+          </ion-card>
+      </ng-template>
+      <ng-template swiperSlide>
+          <ion-card>
+            <ion-card-header class="cardheaderscito">
+              <ion-card-title class="ion-text-center title">Indicadores VPH </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <ion-item>
+                  <ion-label>Vphs Negativos General:</ion-label>
+                  <ion-badge color="success"> {{vphnegageneralTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs Positivos General:</ion-label>
+                  <ion-badge color="danger"> {{vphpositivosgeneralTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs Negativos 35-64 años:</ion-label>
+                  <ion-badge color="success"> {{vphnegaTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs Positivos 35-64 años:</ion-label>
+                  <ion-badge color="danger"> {{vphpositivosTotal}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs Invalidas</ion-label>
+                  <ion-badge color="medium"> {{vphinvalidasTotla}} </ion-badge>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Vphs Invalidas 35-64 años</ion-label>
+                  <ion-badge color="medium"> {{vphinvalidasGeneralTotal}} </ion-badge>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        
+      </ng-template>
+      <ng-template swiperSlide>
+        <ion-card>
+          <ion-card-header class="cardheaderscito">
+            <ion-card-title class="ion-text-center title">Indicadores VPH con CBL</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label>Vph + con Dx CBL 35-64</ion-label>
+                <ion-badge color="danger"> {{vphcbltotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Vph + sin Dx CBL 35-64</ion-label>
+                <ion-badge color="danger"> {{vphcblfaltaTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Vph + con Dx CBL General</ion-label>
+                <ion-badge color="danger"> {{vphcblgeneralTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Vph + sin Dx CBL General</ion-label>
+                <ion-badge color="danger"> {{vphcblfaltageneralTotal}} </ion-badge>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ng-template>
+
+      <ng-template swiperSlide>
+        <ion-card>
+          <ion-card-header class="cardheaderscito">
+            <ion-card-title class="ion-text-center title">VPH CON DX CBL</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label>Vph con CBL (-) 35-64 años :</ion-label>
+                <ion-badge color="success"> {{vphcblnegativasTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Vph con CBL LIBG 35-64 años :</ion-label>
+                <ion-badge color="warning"> {{vphcbllibgTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Vph con CBL LIAG 35-64 años :</ion-label>
+                <ion-badge color="danger"> {{vphcblliagTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Vph con CBL (-) General :</ion-label>
+                <ion-badge color="success"> {{vphcblnegativasgeneralTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Vph con CBL LIBG General :</ion-label>
+                <ion-badge color="warning"> {{vphcbllibggeneraltotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Vph con CBL LIAG General :</ion-label>
+                <ion-badge color="danger"> {{vphcblliaggeneraltotal}} </ion-badge>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ng-template>
+      
+      
+    </swiper>
+
+    
+
+    <!-- informacion por meses general -->
+    <ion-card>
+      <ion-card-header class="cardheaderscito">
+        <ion-card-title color="white" class="ion-text-center ">Información por Meses</ion-card-title>
+      </ion-card-header>
+
+      <ion-grid>
+        <ion-row class="ion-align-items-center" >
+          <ion-col  >
+            <ion-item>
+              <ion-label >Ene:</ion-label>
+              <ion-badge color="medium"> {{enevphTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Feb:</ion-label>
+              <ion-badge color="medium"> {{febvphTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Mar:</ion-label>
+              <ion-badge color="medium">{{marvphTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+        <ion-row class="ion-align-items-center" >
+          <ion-col >
+            <ion-item>
+              <ion-label >Abr:</ion-label>
+              <ion-badge color="medium"> {{abrvphTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>May:</ion-label>
+              <ion-badge color="medium"> {{mayvphTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Jun:</ion-label>
+              <ion-badge color="medium">{{junvphTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+        <ion-row class="ion-align-items-center" >
+          <ion-col >
+            <ion-item>
+              <ion-label >Jul:</ion-label>
+              <ion-badge color="medium"> {{julvphTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Ago:</ion-label>
+              <ion-badge color="medium"> {{agovphTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Sep:</ion-label>
+              <ion-badge color="medium">{{sepvphTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+        <ion-row class="ion-align-items-center" >
+          <ion-col >
+            <ion-item>
+              <ion-label >Oct:</ion-label>
+              <ion-badge color="medium"> {{octvphTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Nov:</ion-label>
+              <ion-badge color="medium"> {{novvphTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Dic:</ion-label>
+              <ion-badge color="medium">{{dicvphTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+
+      </ion-grid>
+
+    </ion-card>
+<!-- termina informacion x meses general -->
+
+    <ion-card>
+      <ion-card-header class="cardheaderscito">
+        <ion-card-title class="ion-text-center title">  Indicadores x Mes General</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Selecciona el Mes</ion-label>
+          <ion-select  
+          interface="popover"
+          (ionChange)="indiSelected($event)" >
+            <ion-select-option  *ngFor="let indi of opcionIndicadores" > {{indi}} </ion-select-option>
+            <!-- <ion-select-option value="blonde">Blonde</ion-select-option>
+            <ion-select-option value="black">Black</ion-select-option>
+            <ion-select-option value="red">Red</ion-select-option> -->
+          </ion-select>
+        </ion-item>
+
+        
+      </ion-card-content>
+
+    </ion-card>  
+
+    <ion-card *ngIf="indiEne">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">ENERO</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{enemenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{ene1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{eneSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{ene1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{enemayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{eneTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    <ion-card *ngIf="indiFeb">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">FEBRERO</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{febmenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{feb1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{febSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{feb1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{febmayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{febTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    <ion-card *ngIf="indiMar">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">MARZO</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{marmenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{mar1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{marSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{mar1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{marmayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{marTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    
+    <ion-card *ngIf="indiAbr">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">ABRIL</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{abrmenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{abr1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{abrSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{abr1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{abrmayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{abrTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    <ion-card *ngIf="indiMay">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">MAYO</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+             < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{maymenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{may1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{maySubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{may1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{maymayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{mayTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    <ion-card *ngIf="indiJun">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">JUNIO</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+             < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{junmenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{jun1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{junSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{jun1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{junmayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{junTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    <ion-card *ngIf="indiJul">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">JULIO</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+             < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{julmenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{jul1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{julSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{jul1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{julmayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{julTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    <ion-card *ngIf="indiAgo">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">AGOSTO</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+             < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{agomenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{ago1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{agoSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{ago1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{agomayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{agoTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    <ion-card *ngIf="indiSep">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">SEPTIEMBRE</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+             < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{sepmenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{sep1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{sepSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{sep1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{sepmayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{sepTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    <ion-card *ngIf="indiOct">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">OCTUBRE</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+             < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{octmenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{oct1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{octSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{oct1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{octmayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{octTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    <ion-card *ngIf="indiNov">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">NOVIEMBRE</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+             < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{novmenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{nov1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{novSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{nov1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{novmayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{novTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+    <ion-card *ngIf="indiDic">
+      <ion-card-header class="bgmes">
+        <ion-card-title class="ion-text-center title">DICIEMBRE</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>
+             < 35 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{dicmenor35Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ 35-64 AÑOS  :	 
+          </ion-label>
+          <ion-badge color="dark"> {{dic1Vez3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            SUBSECUENTES 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{dicSubs3564Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            1 VEZ DESP5 AÑOS 35-64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{dic1vez5Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            > 64 AÑOS :	 
+          </ion-label>
+          <ion-badge color="dark"> {{dicmayor64Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            GENERAL :	 
+          </ion-label>
+          <ion-badge color="dark"> {{dicTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+  
+  
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-item>
+                  <ion-label>1 Vez < 25 : </ion-label>
+                  <ion-badge color="dark"> 25 </ion-badge>
+                  
+                </ion-item>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-grid> -->
+      
+    </ion-card>
+
+  </div>
+</ion-content>

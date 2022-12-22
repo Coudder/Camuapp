@@ -1,0 +1,60 @@
+.info{
+    font-style: italic;
+    font-size: small;
+  }
+
+  .cardh{
+    background-color: #099;
+    
+  }
+.title{
+  color: white;
+}
+
+.pacientes{
+  --background: #099;
+}
+
+
+.bgmes {
+  background-color:dimgray;
+}
+
+ion-spinner {
+  display: block;
+  margin: auto;
+  transform: scale(3);
+}
+
+ion-searchbar {
+  --box-shadow: none !important;
+ 
+}
+
+.busqueda {
+  background-color: white;
+}
+
+ion-skeleton-text {
+  //border-radius: 9999px;
+  // --background: rgba(188, 0, 255, 0.065);
+  // --background-rgb: 188, 0, 255;
+
+  --background: rgba(0, 153, 153, 0.252);
+  --background-rgb: 0, 153, 153;
+  //--background:#099;
+}
+
+.iconuni {
+  margin-right: 10px;
+}
+
+ion-toolbar{
+  --background:  linear-gradient(to right, #035959, #036868, #027878, #018888, #009999);
+
+  color:white;
+}
+
+.icontoolbar{
+  color: white;
+}

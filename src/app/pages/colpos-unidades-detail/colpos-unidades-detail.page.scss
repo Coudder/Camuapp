@@ -1,0 +1,24 @@
+ion-spinner {
+    display: block;
+    margin: auto;
+    transform: scale(3);
+    color: #cf68f8;
+  }
+
+  .title{
+    color: white;
+  }
+
+  ion-toolbar{
+    //--background: linear-gradient(to right, #4b1e52, #6b2e77, #8c40a0, #ad54cb, #cf68f8);
+    --background:linear-gradient(to right, #702d8b, #873ba5, #9e4ac0, #b659dc, #cf68f8);
+    color: white;
+  }
+
+  .cardheaderscolpos {
+    //--background: linear-gradient(to right, #4b1e52, #6b2e77, #8c40a0, #ad54cb, #cf68f8);
+    --background:linear-gradient(to right, #702d8b, #873ba5, #9e4ac0, #b659dc, #cf68f8);
+
+    color: white;
+  }
+ 

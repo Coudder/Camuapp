@@ -1,0 +1,60 @@
+.info{
+    //font-style: italic;
+    font-size: small;
+  }
+
+  .cardh{
+    background-color:#ec578e;
+    
+  }
+.title{
+  color: white;
+}
+
+
+
+ion-spinner {
+    display: block;
+    margin: auto;
+    transform: scale(3);
+    color:#ec578e;
+
+}
+
+.bgmes {
+  background-color:dimgray;
+}
+
+
+.titulo{
+    color: white;
+    }
+    
+.item{
+    background-color:none;
+    border-color: none;
+    --border-style: none;    
+    }
+    
+ion-spinner {
+        display: block;
+        margin: auto;
+        transform: scale(3);
+        color:#ec578e;
+      }
+      .bold {
+        font-weight: bold;
+      }
+      
+ion-toolbar {
+  // --background: linear-gradient(to right, #051937, #362c5c, #6f3b79, #ae488a, #ec578e);
+  //--background: linear-gradient(to right,#5e2842, #7f3456, #a23f69, #c64b7c, #ec578e);
+  //--background: linear-gradient(to right,#44182d, #6a2745, #93365e, #be4676, #ec578e);
+  --background: linear-gradient(to right, #c81f70, #d13077, #da3e7f, #e34b86, #ec578e);
+  color: white;
+  }
+  
+  .cardheaderdet{
+    --background: linear-gradient(to right, #c81f70, #d13077, #da3e7f, #e34b86, #ec578e);
+  color: white;
+  }

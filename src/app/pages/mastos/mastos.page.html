@@ -1,0 +1,592 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title >
+      {{title}} 
+    </ion-title>
+    <ion-button fill="clear" slot="end"  [routerLink]="['/mastos-unidades']" routerDirection ="root">
+      <ion-icon class="icontoolbar" name="storefront" size="large" ></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" slot="end"  [routerLink]="['/mastos-pacientes']" routerDirection ="root">
+      <ion-icon class="icontoolbar" name="person" size="large" ></ion-icon>
+    </ion-button>
+    </ion-toolbar>
+</ion-header>
+<ion-spinner name = "bubbles" class="loading" *ngIf="loading"></ion-spinner>
+
+<ion-content fullscreen *ngIf="!loading">
+  <div>
+    <swiper [config]="swiperConfig">
+      <ng-template swiperSlide>
+        <ion-card>
+          <ion-card-header class="cardheaderdet">
+            <ion-card-title class="ion-text-center title">Información General Mastografias</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label>Total de Tomas:</ion-label>
+                <ion-badge color="success"> {{totalTomas}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B0 :</ion-label>
+                <ion-badge color="warning"> {{birdas0generalTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B1 :</ion-label>
+                <ion-badge color="success"> {{birdas1generalTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B2 :</ion-label>
+                <ion-badge color="success"> {{birdas2generalTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B3 :</ion-label>
+                <ion-badge color="warning"> {{birdas3generalTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B4 :</ion-label>
+                <ion-badge color="warning"> {{birdas4generalTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B4A :</ion-label>
+                <ion-badge color="warning"> {{birdas4ageneralTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B4B :</ion-label>
+                <ion-badge color="warning"> {{birdas4bgeneralTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B4C :</ion-label>
+                <ion-badge color="warning"> {{birdas4cgeneralTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B5 :</ion-label>
+                <ion-badge color="danger"> {{birdas5generalTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B6 :</ion-label>
+                <ion-badge color="danger"> {{birdas6generalTotal}} </ion-badge>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ng-template>
+      <ng-template swiperSlide>
+        <ion-card>
+          <ion-card-header class="cardheaderdet">
+            <ion-card-title class="ion-text-center title">Mastografias 40-69 años</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label>Total de Tomas:</ion-label>
+                <ion-badge color="success"> {{metaMastoShow}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B0 :</ion-label>
+                <ion-badge color="warning"> {{biradstotal0}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B1 :</ion-label>
+                <ion-badge color="success"> {{biradstotal1}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B2 :</ion-label>
+                <ion-badge color="success"> {{biradstotal2}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B3 :</ion-label>
+                <ion-badge color="warning"> {{biradstotal3}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B4 :</ion-label>
+                <ion-badge color="warning"> {{biradstotal4}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B4A :</ion-label>
+                <ion-badge color="warning"> {{biradstotal4a}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B4B :</ion-label>
+                <ion-badge color="warning"> {{biradstotal4b}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B4C :</ion-label>
+                <ion-badge color="warning"> {{biradstotal4c}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B5 :</ion-label>
+                <ion-badge color="danger"> {{biradstotal5}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografia B6 :</ion-label>
+                <ion-badge color="danger"> {{biradstotal6}} </ion-badge>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ng-template>
+      <ng-template swiperSlide>
+        <ion-card>
+          <ion-card-header class="cardheaderdet">
+            <ion-card-title class="ion-text-center title">Información General</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label>Pendientes de Resultado:</ion-label>
+                <ion-badge color="medium"> {{biradsnullTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Referidas a Ultrasonido :</ion-label>
+                <ion-badge color="warning"> {{refusmTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mastografias con Toma de Usm:</ion-label>
+                <ion-badge color="success"> {{tomausmTotal}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Pendientes de Ultrasonido:</ion-label>
+                <ion-badge color="danger"> {{refusmTotal - tomausmTotal}}  </ion-badge>
+              </ion-item>
+             
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ng-template>
+    </swiper>
+
+    <!-- <ion-card mb-2>  
+      <ion-button color="warning"   expand="block" routerLink="/mastos-unidades" routerDirection ="root" class="pacientes" >
+        INFORMACION X UNIDAD
+      </ion-button>  
+    </ion-card> -->
+
+    <ion-card>
+      <ion-card-header class="cardheaderdet">
+        <ion-card-title color="white" class="ion-text-center ">Información por Meses</ion-card-title>
+      </ion-card-header>
+
+      <ion-grid>
+        <ion-row class="ion-align-items-center" >
+          <ion-col  >
+            <ion-item>
+              <ion-label >Ene:</ion-label>
+              <ion-badge color="medium"> {{enemastosTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Feb:</ion-label>
+              <ion-badge color="medium"> {{febmastosTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Mar:</ion-label>
+              <ion-badge color="medium">{{marmastosTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+        <ion-row class="ion-align-items-center" >
+          <ion-col >
+            <ion-item>
+              <ion-label >Abr:</ion-label>
+              <ion-badge color="medium"> {{abrmastosTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>May:</ion-label>
+              <ion-badge color="medium"> {{maymastosTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Jun:</ion-label>
+              <ion-badge color="medium">{{junmastosTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+        <ion-row class="ion-align-items-center" >
+          <ion-col >
+            <ion-item>
+              <ion-label >Jul:</ion-label>
+              <ion-badge color="medium"> {{julmastosTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Ago:</ion-label>
+              <ion-badge color="medium"> {{agomastosTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Sep:</ion-label>
+              <ion-badge color="medium">{{sepmastosTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+        <ion-row class="ion-align-items-center" >
+          <ion-col >
+            <ion-item>
+              <ion-label >Oct:</ion-label>
+              <ion-badge color="medium"> {{octmastosTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Nov:</ion-label>
+              <ion-badge color="medium"> {{novmastosTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Dic:</ion-label>
+              <ion-badge color="medium">{{dicmastosTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+
+      </ion-grid>
+
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header class="cardheaderdet">
+        <ion-card-title class="ion-text-center title">  Indicadores x Mes General</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Selecciona el Mes</ion-label>
+          <ion-select  
+          interface="popover"
+          (ionChange)="indiSelected($event)" >
+            <ion-select-option  *ngFor="let indi of opcionIndicadores" > {{indi}} </ion-select-option>
+            <!-- <ion-select-option value="blonde">Blonde</ion-select-option>
+            <ion-select-option value="black">Black</ion-select-option>
+            <ion-select-option value="red">Red</ion-select-option> -->
+          </ion-select>
+        </ion-item>
+
+        
+      </ion-card-content>
+
+    </ion-card>  
+
+    <ion-card *ngIf="indiEne">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">ENERO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{ene4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{enemastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{enemastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{enemastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiFeb">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">FEBRERO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{feb4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{febmastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{febmastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{febmastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiMar">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">MARZO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{mar4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{marmastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{marmastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{marmastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiAbr">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">ABRIL</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{abr4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{abrmastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{abrmastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{abrmastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiMay">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">MAYO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{may4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{maymastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{maymastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{maymastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiJun">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">JUNIO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{jun4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{junmastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{junmastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{junmastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiJul">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">JULIO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{jul4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{julmastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{julmastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{julmastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiAgo">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">AGOSTO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{ago4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{agomastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{agomastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{agomastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiSep">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">SEPTIEMBRE</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{sep4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{sepmastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{sepmastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{sepmastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiOct">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">OCTUBRE</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{oct4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{octmastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{octmastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{octmastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiNov">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">NOVIEMBRE</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{nov4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{novmastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{novmastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{novmastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiDic">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">DICIEMBRE</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{dic4069total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS < 40 AÑOS</ion-label>
+          <ion-badge color="dark"> {{dicmastomenor40Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>MASTOGRAFIAS > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{dicmastomayor69Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>TOTAL</ion-label>
+          <ion-badge color="dark"> {{dicmastosTotal}} </ion-badge>
+        </ion-item>
+       
+      </ion-list>
+    </ion-card>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,290 @@
+<ion-header  translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+      <ion-back-button  defaultHref="/detecmama-pacientes" ></ion-back-button>
+    </ion-buttons>
+    <ion-title >
+      {{title}}
+    </ion-title>
+   
+  </ion-toolbar>
+  <ion-toolbar>
+    <div class="ion-text-center">
+      <ion-icon name="file-tray-full" size="large"></ion-icon>
+    </div>  
+    <ion-searchbar 
+    class="ion-text-uppercase"
+    placeholder="Busqueda..."
+    inputmode="text"
+    (ionChange)="onSearchChange( $event )"
+  ></ion-searchbar>
+  <div class="ion-text-center">
+    <ion-badge *ngIf="years" class="detmamacolor">TOTAL GENERAL: {{numDet}} </ion-badge><br> 
+    <ion-badge *ngIf="anio2019" class="detmamacolor">TOTAL 2019: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="anio2020" class="detmamacolor">TOTAL 2020: {{numData}} </ion-badge>
+    <ion-badge *ngIf="anio2021" class="detmamacolor">TOTAL 2021: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="anio2022" class="detmamacolor">TOTAL 2022: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="anio2023" class="detmamacolor">TOTAL 2023: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="anio2024" class="detmamacolor">TOTAL 2024: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="anio2025" class="detmamacolor">TOTAL 2025: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="anio2026" class="detmamacolor">TOTAL 2026: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="anio2027" class="detmamacolor">TOTAL 2027: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="anio2028" class="detmamacolor">TOTAL 2028: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="anio2029" class="detmamacolor">TOTAL 2029: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="anio2030" class="detmamacolor">TOTAL 2030: {{numData}} </ion-badge> 
+    <ion-badge *ngIf="mensaje" color="danger"> {{errorMensaje}} </ion-badge>   
+  </div>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-list>
+      <ion-item>
+        <ion-label>Selecciona Año</ion-label>
+        <ion-select 
+          interface="popover" 
+          placeholder="Selecciona Año" 
+          (ionChange)="getYear($event)" >
+          <ion-select-option *ngFor="let y of year">
+              {{y.years}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+</ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" >
+
+
+  <ion-list *ngIf="loading">
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="allyears" >
+    <ion-item *ngFor="let pac of datos | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>    
+
+  <ion-list *ngIf="anio2019">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2020">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2021">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2022">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2023">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2024">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2025">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2026">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2027">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2028">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2029">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="anio2030">
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/detecmama-pac-archivo-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fAtencion}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

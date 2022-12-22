@@ -1,0 +1,544 @@
+<ion-header  translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+      <ion-back-button  defaultHref="/detecmama-unidades" ></ion-back-button>
+    </ion-buttons>
+    <ion-title >
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-spinner name = "bubbles" class="loading" *ngIf="loading"></ion-spinner>
+  <p class="ion-text-center"> {{mensaje}} </p>
+
+<ion-content fullscreen  *ngIf="!loading">
+  <div>
+    <swiper [config]="swiperConfig">
+      <ng-template swiperSlide>
+        <ion-card>
+          <ion-card-header class="cardheaderdet">
+            <ion-card-title class="ion-text-center title">Información General Expl. Clinica Mama</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label>Total de Tomas:</ion-label>
+                <ion-badge color="success"> {{numDet}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Tomas de 25 a 39 años:</ion-label>
+                <ion-badge color="tertiary"> {{metaDetshow}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Tomas menor de 25 años:</ion-label>
+                <ion-badge color="medium"> {{totalMen25}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Tomas de 40-69 años:</ion-label>
+                <ion-badge color="warning"> {{toMasto}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Tomas mayor de 69 años:</ion-label>
+                <ion-badge color="warning"> {{totalMayor69}} </ion-badge>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ng-template>
+      <ng-template swiperSlide>
+        <ion-card>
+          <ion-card-header class="cardheaderdet">
+            <ion-card-title class="ion-text-center title ">Conducta a Seguir</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label>Expl. rutina en 1 año:</ion-label>
+                <ion-badge color="success"> {{detrutinaShow}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Referidas a Toma de Masto:</ion-label>
+                <ion-badge color="warning"> {{detmastoShow}} </ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Referida a Toma de USM:</ion-label>
+                <ion-badge color="danger"> {{detusmShow}} </ion-badge>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ng-template>
+      
+
+
+    </swiper>
+
+   
+
+    <ion-card>
+      <ion-card-header class="cardheaderdet">
+        <ion-card-title color="white" class="ion-text-center ">Información por Meses</ion-card-title>
+      </ion-card-header>
+
+      <ion-grid>
+        <ion-row class="ion-align-items-center" >
+          <ion-col  >
+            <ion-item>
+              <ion-label >Ene:</ion-label>
+              <ion-badge color="medium"> {{eneTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Feb:</ion-label>
+              <ion-badge color="medium"> {{febTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Mar:</ion-label>
+              <ion-badge color="medium">{{marTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+        <ion-row class="ion-align-items-center" >
+          <ion-col >
+            <ion-item>
+              <ion-label >Abr:</ion-label>
+              <ion-badge color="medium"> {{abrTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>May:</ion-label>
+              <ion-badge color="medium"> {{mayTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Jun:</ion-label>
+              <ion-badge color="medium">{{junTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+        <ion-row class="ion-align-items-center" >
+          <ion-col >
+            <ion-item>
+              <ion-label >Jul:</ion-label>
+              <ion-badge color="medium"> {{julTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Ago:</ion-label>
+              <ion-badge color="medium"> {{agoTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Sep:</ion-label>
+              <ion-badge color="medium">{{sepTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+        <ion-row class="ion-align-items-center" >
+          <ion-col >
+            <ion-item>
+              <ion-label >Oct:</ion-label>
+              <ion-badge color="medium"> {{octTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Nov:</ion-label>
+              <ion-badge color="medium"> {{novTotal}} </ion-badge>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Dic:</ion-label>
+              <ion-badge color="medium">{{dicTotal}}</ion-badge>
+            </ion-item>
+          </ion-col>
+         
+        </ion-row>
+
+
+      </ion-grid>
+
+    </ion-card>
+
+     <!-- termina informacion x meses general -->
+
+     <ion-card>
+      <ion-card-header class="cardheaderdet">
+        <ion-card-title class="ion-text-center title">  Indicadores x Mes General</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Selecciona el Mes</ion-label>
+          <ion-select  
+          interface="popover"
+          (ionChange)="indiSelected($event)" >
+            <ion-select-option  *ngFor="let indi of opcionIndicadores" > {{indi}} </ion-select-option>
+            <!-- <ion-select-option value="blonde">Blonde</ion-select-option>
+            <ion-select-option value="black">Black</ion-select-option>
+            <ion-select-option value="red">Red</ion-select-option> -->
+          </ion-select>
+        </ion-item>
+
+        
+      </ion-card-content>
+
+    </ion-card>  
+
+    <ion-card *ngIf="indiEne">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">ENERO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{enemenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{ene2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{ene4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{enemayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{eneTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiFeb">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">FEBRERO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{febmenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{feb2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{feb4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{febmayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{febTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    
+    <ion-card *ngIf="indiMar">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">MARZO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{marmenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{mar2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{mar4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{marmayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{marTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+     
+    <ion-card *ngIf="indiAbr">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">ABRIL</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{abrmenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{abr2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{abr4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{abrmayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{abrTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiMay">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">MAYO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{maymenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{may2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{may4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{maymayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{mayTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiJun">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">JUNIO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{junmenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{jun2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{jun4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{junmayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{junTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    
+    <ion-card *ngIf="indiJul">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">JULIO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{julmenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{jul2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{jul4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{julmayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{julTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiAgo">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">AGOSTO</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{agomenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{ago2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{ago4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{agomayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{agoTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiSep">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">SEPTIEMBRE</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{sepmenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{sep2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{sep4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{sepmayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{sepTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiOct">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">OCTUBRE</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{octmenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{oct2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{oct4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{octmayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{octTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiNov">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">NOVIEMBRE</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{novmenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{nov2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{nov4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{novmayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{novTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="indiDic">
+      <ion-card-header class="bgmes">
+          <ion-card-title class="ion-text-center title ">DICIEMBRE</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label>EXPL. < 25 AÑOS</ion-label>
+          <ion-badge color="dark"> {{dicmenorTotal25}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 25-39 AÑOS</ion-label>
+          <ion-badge color="dark"> {{dic2539Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. 40-69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{dic4069Total}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>EXPL. > 69 AÑOS</ion-label>
+          <ion-badge color="dark"> {{dicmayorTotal69}} </ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>GENERAL</ion-label>
+          <ion-badge color="dark"> {{dicTotal}} </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+  </div>
+
+</ion-content>

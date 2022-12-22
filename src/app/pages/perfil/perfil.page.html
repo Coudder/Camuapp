@@ -1,0 +1,60 @@
+<ion-header>
+  
+  <ion-toolbar  >
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content fullscreen="true" >
+ 
+  <ion-card>
+    <ion-card-header class="cardheaderperfil">
+     <ion-card-title class="ion-text-center title">
+        Datos de Perfil
+     </ion-card-title>
+   </ion-card-header>
+
+   <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-icon name = "person" size="large"></ion-icon>
+              <ion-label>Nombre: </ion-label>
+              <ion-label  style="font-weight: bold;"> {{identity.name}} </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-icon name = "document" size="large"></ion-icon>
+              <ion-label>Apellido: </ion-label>
+              <ion-label style="font-weight: bold;" > {{identity.lastname}} </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-icon name = "mail" size="large"></ion-icon>
+              <ion-label>Email: </ion-label>
+              <ion-label style="font-weight: bold;"> {{identity.email}} </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+   </ion-card-content>
+
+  </ion-card>
+</ion-content>

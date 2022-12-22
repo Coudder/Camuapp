@@ -1,0 +1,53 @@
+info{
+    font-style: italic;
+    font-size: small;
+  }
+
+  .cardh{
+    background-color: #099;
+    
+  }
+.title{
+  color: white;
+}
+
+.pacientes{
+  --background: #099;
+}
+
+
+.bgmes {
+  background-color:dimgray;
+}
+
+ion-spinner {
+  display: block;
+  margin: auto;
+  transform: scale(3);
+  color: #099;
+}
+
+.citocolor {
+  --background:#099;
+  color:white;
+  --box-shadow: none !important;
+  
+}
+
+ion-toolbar{
+ // --background: linear-gradient(to right, #051937, #003658, #005674, #00778a, #009999);
+  --background:  linear-gradient(to right, #035959, #036868, #027878, #018888, #009999);
+  color:white;
+}
+
+.icontoolbar{
+  color: white;
+}
+
+.cardheaderscito{
+  //--background: linear-gradient(to right, #051937, #003658, #005674, #00778a, #009999);
+  --background:  linear-gradient(to right, #035959, #036868, #027878, #018888, #009999);
+
+  color:white;
+}
+

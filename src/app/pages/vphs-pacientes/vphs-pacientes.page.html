@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+      <ion-back-button  defaultHref="/vphs" ></ion-back-button>
+    </ion-buttons>
+    <ion-title >
+      {{title}}
+    </ion-title>
+    <ion-button fill="clear"  slot="end"  [routerLink]="['/vphs-pac-archivo']">
+      <ion-icon class="icontoolbar" name="file-tray-full" size="large" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+  <ion-toolbar>
+   
+    <ion-searchbar 
+    class="ion-text-uppercase"
+    placeholder="Busqueda..."
+    inputmode="text"
+    (ionChange)="onSearchChange( $event )"
+  ></ion-searchbar>
+  <div class="ion-text-center">
+    <ion-badge > TOTAL: {{numVphs}}  </ion-badge>
+</div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="loading">
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+    <ion-list  *ngIf="!loading">
+      <ion-item *ngFor="let pac of datos | filtropac:busqueda "  [routerLink]=" ['/vphs-pacientes-detail',pac.no]"  >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+       
+        <h2> {{pac.nombre}} </h2>
+        <p>Fecha de Toma {{pac.fToma}} </p>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+        <!-- <p *ngIf="pac.dxCito != '' ">Tiene Resultado</p> -->
+        <span *ngIf="pac.rVph != ''"><ion-icon color="success"  name="checkmark-circle-outline"></ion-icon></span>
+        <span *ngIf="pac.rVph == ''"><ion-icon color="danger"  name="close-circle-outline"></ion-icon></span>
+      
+      </ion-label>
+      </ion-item>
+    </ion-list>
+ 
+</ion-content>

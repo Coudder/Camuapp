@@ -1,0 +1,87 @@
+<ion-header   translucent>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/vphs" ></ion-back-button>
+    </ion-buttons>
+    <ion-title >
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar  
+    class="ion-text-uppercase"
+    placeholder ="Busqueda..."
+    inputmode="text"
+    (ionChange)="onSearchChange($event)"
+  >
+  </ion-searchbar>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen >
+<!-- skeleton load -->
+  <ion-list *ngIf="loading">
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item  >
+      
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+  
+      <ion-label  >
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <!-- p mensaje -->
+  <ion-list *ngIf="!loading">
+    <ion-item *ngFor="let uni of unidades | filtroUni:busqueda" [routerLink]="['/vphs-unidades-detail',uni.id] " >
+      <ion-icon name="storefront" class="iconuni"></ion-icon>
+      <ion-label>
+        <h2> {{uni.nombre_unidad}} </h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+ 

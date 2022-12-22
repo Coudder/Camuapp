@@ -1,0 +1,355 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="identity" >
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="identity " >
+      {{title || 'Menu'}}
+    </ion-title>
+
+    <ion-buttons  [routerLink]= " ['/login'] " *ngIf ="!identity"  >
+      <ion-title> CANCER DE LA MUJER </ion-title>
+      <ion-icon name="log-in" size="large"></ion-icon>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-spinner name = "bubbles" class="loading" *ngIf="loading"></ion-spinner>
+
+
+<ion-content [fullscreen]="true" *ngIf="!loading" >
+  <ion-card *ngFor="let y of year; let i = index">
+    <ion-card-header  class="ion-text-center cardheaderhome" >
+        <ion-card-title color="white bold" >
+            Información Cáncer de la Mujer
+        </ion-card-title>
+        <ion-card-title color="white bold">  {{y.ano}} </ion-card-title>
+        <ion-card-subtitle> </ion-card-subtitle>
+    </ion-card-header>   
+  </ion-card>
+
+  <div >
+       <!-- informacion general -->
+
+    <ion-card>
+      <ion-card-header class="ion-text-center cardheaderhome">
+          <ion-card-title color="white">Tomas en el Año </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+      
+        <ion-list>
+          <ion-item>
+            <ion-icon name="document-text" size="large"></ion-icon>
+            <ion-label style="font-weight: bold;">Tomas de Citologias:</ion-label>
+            <ion-badge class="badgeCitos"> {{numCito}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="document-text" size="large"></ion-icon>
+            <ion-label style="font-weight: bold;">Tomas de Vph:</ion-label>
+            <ion-badge class="badgeCitos" > {{numVph}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="document-text" size="large"></ion-icon>
+            <ion-label style="font-weight: bold;">Tomas de Expl. Mama:</ion-label>
+            <ion-badge class="badgeDet" > {{numDet}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="document-text" size="large"></ion-icon>
+            <ion-label style="font-weight: bold;">Tomas de Mastografias:</ion-label>
+            <ion-badge class="badgeDet" > {{numMasto}} </ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="document-text" size="large"></ion-icon>
+            <ion-label style="font-weight: bold;">Colposcopias en Control:</ion-label>
+            <ion-badge class="badgeColpos" > {{numColpos}} </ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+ 
+    <swiper [config]="swiperConfig">
+      <ng-template swiperSlide>
+        <ion-card  >
+          <ion-card-header class="ion-text-center badgeCitos">
+            <ion-card-title color="white">Muestreo mayor Tomas de Citologias </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+    
+          <!-- CREAR UN NGiF POR SI NO HAY DATA muestre que todavia no hay informacion para mostrar un mensaje -->
+          <ion-list  *ngIf="citounidadesmasTomas && objectKeys(citounidadesmasTomas).length > 0; else nodataCitomayor">
+            <ion-item *ngFor="let key of objectKeys(citounidadesmasTomas)" >
+              <ion-icon  name="storefront" size="large"></ion-icon>
+              <ion-label>{{ key }}: </ion-label>
+              <ion-badge color="success">  {{ citounidadesmasTomas[key] }}  </ion-badge>
+            </ion-item>
+          </ion-list>
+          <ng-template #nodataCitomayor>
+            <ion-item>
+              <ion-icon color="warning" name="alert" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold"> ¡No hay información para mostrar! </ion-label>
+            </ion-item>
+          </ng-template>
+        </ion-card-content>
+        </ion-card>
+      </ng-template>
+      
+      <ng-template swiperSlide>
+       <!-- citologias unidades con menores tomas -->
+       <ion-card  *ngIf="!loading">
+        <ion-card-header class="ion-text-center badgeCitos">
+          <ion-card-title color="white">Muestreo menor Tomas de Citologias </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngIf="citounimenosTomas && objectKeys(citounimenosTomas).length > 0; else nodataCitomenor">
+            <ion-item  *ngFor="let key of objectKeys(citounimenosTomas)">
+              <ion-icon  name="storefront" size="large"></ion-icon>
+              <ion-label> {{ key }}: </ion-label>  
+              <ion-badge color="danger">  {{ citounimenosTomas[key] }}  </ion-badge>
+            </ion-item>
+          </ion-list>
+          <ng-template #nodataCitomenor>
+            <ion-item>
+              <ion-icon color="warning" name="alert" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold"> ¡No hay información para mostrar! </ion-label>
+            </ion-item>
+          </ng-template>
+          
+        </ion-card-content>
+      </ion-card>
+
+      </ng-template>  
+    </swiper>
+
+     <swiper [config]="swiperConfig">
+      <ng-template swiperSlide>
+        <ion-card  >
+          <ion-card-header class="ion-text-center badgeCitos">
+            <ion-card-title color="white">Muestreo mayor Tomas de Citologias </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+    
+        
+
+
+          <!-- CREAR UN NGiF POR SI NO HAY DATA muestre que todavia no hay informacion para mostrar un mensaje -->
+          <ion-list  *ngIf="citounidadesmasTomas && objectKeys(citounidadesmasTomas).length > 0; else nodataCitomayor">
+            <ion-item *ngFor="let key of objectKeys(citounidadesmasTomas)" >
+              <ion-icon  name="storefront" size="large"></ion-icon>
+              <ion-label>{{ key }}: </ion-label>
+              <ion-badge color="success">  {{ citounidadesmasTomas[key] }}  </ion-badge>
+            </ion-item>
+          </ion-list>
+          <ng-template #nodataCitomayor>
+            <ion-item>
+              <ion-icon color="warning" name="alert" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold"> ¡No hay información para mostrar! </ion-label>
+            </ion-item>
+          </ng-template>
+        </ion-card-content>
+        </ion-card>
+      </ng-template>
+      
+      <ng-template swiperSlide>
+       <!-- citologias unidades con menores tomas -->
+       <ion-card  *ngIf="!loading">
+        <ion-card-header class="ion-text-center badgeCitos">
+          <ion-card-title color="white">Muestreo menor Tomas de Citologias </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngIf="citounimenosTomas && objectKeys(citounimenosTomas).length > 0; else nodataCitomenor">
+            <ion-item  *ngFor="let key of objectKeys(citounimenosTomas)">
+              <ion-icon  name="storefront" size="large"></ion-icon>
+              <ion-label> {{ key }}: </ion-label>  
+              <ion-badge color="danger">  {{ citounimenosTomas[key] }}  </ion-badge>
+            </ion-item>
+          </ion-list>
+          <ng-template #nodataCitomenor>
+            <ion-item>
+              <ion-icon color="warning" name="alert" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold"> ¡No hay información para mostrar! </ion-label>
+            </ion-item>
+          </ng-template>
+          
+        </ion-card-content>
+      </ion-card>
+
+      </ng-template>  
+    </swiper>
+        
+ 
+    
+    <swiper [config]="swiperConfig">
+      <ng-template swiperSlide>
+        <ion-card>
+          <ion-card-header class="ion-text-center badgeCitos">
+            <ion-card-title color="white">Muestreo mayor Tomas de Vph </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+    
+          <!-- CREAR UN NGiF POR SI NO HAY DATA muestre que todavia no hay informacion para mostrar un mensaje -->
+          <ion-list  *ngIf="vphunimasTomas && objectKeys(vphunimasTomas).length > 0; else nodataVphmayor">  
+            <ion-item *ngFor="let key of objectKeys(vphunimasTomas)">
+              <ion-icon  name="storefront" size="large"></ion-icon>
+              <ion-label>{{ key }}: </ion-label>
+              <ion-badge color="success">  {{ vphunimasTomas[key] }}  </ion-badge>
+            </ion-item>
+          </ion-list>
+          <ng-template #nodataVphmayor>
+            <ion-item>
+              <ion-icon color="warning" name="alert" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold"> ¡No hay información para mostrar! </ion-label>
+            </ion-item>
+          </ng-template>
+        </ion-card-content>
+        </ion-card>
+      </ng-template>
+      
+      <ng-template swiperSlide>
+       <!-- vphs unidades con menores tomas -->
+       <ion-card>
+        <ion-card-header class="ion-text-center badgeCitos">
+          <ion-card-title color="white">Muestreo menor Tomas de Vph </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list  *ngIf="vphunimenosTomas && objectKeys(vphunimenosTomas).length > 0; else nodataVphmenor">
+            <ion-item  *ngFor="let key of objectKeys(vphunimenosTomas)">
+              <ion-icon  name="storefront" size="large"></ion-icon>
+              <ion-label> {{ key }}: </ion-label>  
+              <ion-badge color="danger">  {{ vphunimenosTomas[key] }}  </ion-badge>
+            </ion-item>
+          </ion-list>
+          <ng-template #nodataVphmenor>
+            <ion-item>
+              <ion-icon color="warning" name="alert" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold"> ¡No hay información para mostrar! </ion-label>
+            </ion-item>
+          </ng-template>
+        </ion-card-content>
+      </ion-card>
+
+      </ng-template>
+      
+
+    </swiper>
+
+    <swiper [config]="swiperConfig">
+      <ng-template swiperSlide>
+        <!-- unidades con mayor tomas de detecciones de mama -->
+        <ion-card>
+          <ion-card-header class="ion-text-center badgeDet">
+            <ion-card-title color="white">Muestreo mayor Tomas de Expl. Mama </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- CREAR UN NGiF POR SI NO HAY DATA muestre que todavia no hay informacion para mostrar un mensaje -->
+          <ion-list *ngIf="detunimasTomas && objectKeys(detunimasTomas).length > 0; else nodataDetmayor">  
+            <ion-item *ngFor="let key of objectKeys(detunimasTomas)">
+              <ion-icon  name="storefront" size="large"></ion-icon>
+              <ion-label>{{ key }}: </ion-label>
+              <ion-badge color="success">  {{ detunimasTomas[key] }}  </ion-badge>
+            </ion-item>
+          </ion-list>
+          <ng-template #nodataDetmayor>
+            <ion-item>
+              <ion-icon color="warning" name="alert" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold"> ¡No hay información para mostrar! </ion-label>
+            </ion-item>
+          </ng-template>
+        </ion-card-content>
+        </ion-card>
+      </ng-template>
+      
+      <ng-template swiperSlide>
+       <!-- detecciones  unidades con menores tomas -->
+       <ion-card>
+        <ion-card-header class="ion-text-center badgeDet">
+          <ion-card-title color="white">Muestreo menor Tomas de Expl. Mama </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngIf="detunimenosTomas && objectKeys(detunimenosTomas).length > 0; else nodataDetmenor">
+            <ion-item  *ngFor="let key of objectKeys(detunimenosTomas)">
+              <ion-icon  name="storefront" size="large"></ion-icon>
+              <ion-label> {{ key }}: </ion-label>  
+              <ion-badge color="danger">  {{ detunimenosTomas[key] }}  </ion-badge>
+            </ion-item>
+          </ion-list>
+          <ng-template #nodataDetmenor>
+            <ion-item>
+              <ion-icon color="warning" name="alert" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold"> ¡No hay información para mostrar! </ion-label>
+            </ion-item>
+          </ng-template>
+        </ion-card-content>
+      </ion-card>
+
+      </ng-template>
+      
+
+    </swiper>
+
+    <swiper [config]="swiperConfig">
+      <ng-template swiperSlide>
+        <ion-card>
+          <ion-card-header class="ion-text-center badgeDet">
+            <ion-card-title color="white">Muestreo mayor Tomas de Mastografias </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+    
+          <!-- CREAR UN NGiF POR SI NO HAY DATA muestre que todavia no hay informacion para mostrar un mensaje -->
+          <ion-list *ngIf="mastosunimasTomas && objectKeys(mastosunimasTomas).length > 0; else nodataMastosmayor">  
+            <ion-item *ngFor="let key of objectKeys(mastosunimasTomas)">
+              <ion-icon  name="storefront" size="large"></ion-icon>
+              <ion-label>{{ key }}: </ion-label>
+              <ion-badge color="success">  {{ mastosunimasTomas[key] }}  </ion-badge>
+            </ion-item>
+          </ion-list>
+          <ng-template #nodataMastosmayor>
+            <ion-item>
+              <ion-icon color="warning" name="alert" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold"> ¡No hay información para mostrar! </ion-label>
+            </ion-item>
+          </ng-template>
+
+        </ion-card-content>
+        </ion-card>
+      </ng-template>
+      
+      <ng-template swiperSlide>
+       <!-- citologias unidades con menores tomas -->
+       <ion-card>
+        <ion-card-header class="ion-text-center badgeDet">
+          <ion-card-title color="white">Muestreo menor Tomas de Mastografias </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list  *ngIf="mastosunimenosTomas && objectKeys(mastosunimenosTomas).length > 0; else nodataMastosmenor" >
+            <ion-item  *ngFor="let key of objectKeys(mastosunimenosTomas)">
+              <ion-icon  name="storefront" size="large"></ion-icon>
+              <ion-label> {{ key }}: </ion-label>  
+              <ion-badge color="danger">  {{ mastosunimenosTomas[key] }}  </ion-badge>
+            </ion-item>
+          </ion-list>
+          <ng-template #nodataMastosmenor>
+            <ion-item>
+              <ion-icon color="warning" name="alert" size="large"></ion-icon>
+              <ion-label class="ion-text-center bold"> ¡No hay información para mostrar! </ion-label>
+            </ion-item>
+          </ng-template>
+        </ion-card-content>
+      </ion-card>
+
+      </ng-template>
+      
+
+    </swiper>
+  </div>
+
+
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">fsdfd</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+ 
+ 
+</ion-content>

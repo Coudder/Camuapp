@@ -1,0 +1,42 @@
+.cardh{
+    background-color: #3d3d3d;
+    
+  }
+.title{
+  color: white;
+}
+
+.test{
+  background-color: #3d3d3d;
+}
+
+ion-toolbar{
+ // --background: linear-gradient(to right, #009999, #0099bb, #0093d6, #7187de, #b672cb, #cb69c2, #de5fb5, #ef54a5, #ed55b8, #e859cd, #de5fe2, #cf68f8);
+ //--background:  linear-gradient(to bottom, #009999, #0099bb, #0093d6, #7187de, #b672cb, #cb69c2, #de5fb5, #ef54a5, #ed55b8, #e859cd, #de5fe2, #cf68f8);
+ //--background:  linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);  
+// --background:  linear-gradient(to right, #000000, #0e0d0e, #171717, #1f1e1e, #272626);  
+ //--background:  linear-gradient(to right,#121212, #121519, #0b191e, #041e1e, #062118);  
+ --background:  linear-gradient(to right,#000f0a, #041711, #081d16, #09231a, #09291e);  
+
+ color: white;
+
+}
+
+
+.cardheaderperfil{
+  --background:  linear-gradient(to right,#000f0a, #041711, #081d16, #09231a, #09291e);  
+ color: white;
+}
+
+
+ion-icon {
+  margin-right: 10px;
+}
+
+ion-spinner {
+  display: block;
+  margin: auto;
+  transform: scale(5);
+  color:#081d16;
+
+}
