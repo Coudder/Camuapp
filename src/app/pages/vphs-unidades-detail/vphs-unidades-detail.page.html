@@ -3,6 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button  defaultHref="/vphs-unidades" ></ion-back-button>
     </ion-buttons>
+    <ion-button fill="clear" slot="end"  [routerLink]="['/vphs-unidad-pacientes',id]"  routerDirection ="root">
+      <ion-icon class="icontoolbar" name="person" size="large" ></ion-icon>
+    </ion-button>
     <ion-title >
      {{title}}
     </ion-title>

@@ -159,6 +159,87 @@ const routes: Routes = [
   {
     path: 'detecmama-pac-archivo-detail/:id',
     loadChildren: () => import('./pages/detecmama-pac-archivo-detail/detecmama-pac-archivo-detail.module').then( m => m.DetecmamaPacArchivoDetailPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'cito-unidad-pacientes/:id',
+    
+    loadChildren: () => import('./pages/cito-unidad-pacientes/cito-unidad-pacientes.module').then( m => m.CitoUnidadPacientesPageModule), canActivate: [IdentityGuard],
+  },
+  {
+    path: 'cito-unidad-pacientes-detail/:id',
+    loadChildren: () => import('./pages/cito-unidad-pacientes-detail/cito-unidad-pacientes-detail.module').then( m => m.CitoUnidadPacientesDetailPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'cito-unidad-pac-archivo/:id',
+    loadChildren: () => import('./pages/cito-unidad-pac-archivo/cito-unidad-pac-archivo.module').then( m => m.CitoUnidadPacArchivoPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'cito-unidad-pac-archivo-detail/:id',
+    loadChildren: () => import('./pages/cito-unidad-pac-archivo-detail/cito-unidad-pac-archivo-detail.module').then( m => m.CitoUnidadPacArchivoDetailPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'vphs-unidad-pacientes/:id',
+    loadChildren: () => import('./pages/vphs-unidad-pacientes/vphs-unidad-pacientes.module').then( m => m.VphsUnidadPacientesPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'vphs-unidad-pacientes-detail/:id',
+    loadChildren: () => import('./pages/vphs-unidad-pacientes-detail/vphs-unidad-pacientes-detail.module').then( m => m.VphsUnidadPacientesDetailPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'vphs-unidad-pac-archivo/:id',
+    loadChildren: () => import('./pages/vphs-unidad-pac-archivo/vphs-unidad-pac-archivo.module').then( m => m.VphsUnidadPacArchivoPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'vphs-unidad-pac-archivo-detail/:id',
+    loadChildren: () => import('./pages/vphs-unidad-pac-archivo-detail/vphs-unidad-pac-archivo-detail.module').then( m => m.VphsUnidadPacArchivoDetailPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'detecmama-unidad-pacientes/:id',
+    loadChildren: () => import('./pages/detecmama-unidad-pacientes/detecmama-unidad-pacientes.module').then( m => m.DetecmamaUnidadPacientesPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'detecmama-unidad-pacientes-detail/:id',
+    loadChildren: () => import('./pages/detecmama-unidad-pacientes-detail/detecmama-unidad-pacientes-detail.module').then( m => m.DetecmamaUnidadPacientesDetailPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'detecmama-unidad-pac-archivo/:id',
+    loadChildren: () => import('./pages/detecmama-unidad-pac-archivo/detecmama-unidad-pac-archivo.module').then( m => m.DetecmamaUnidadPacArchivoPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'detecmama-unidad-pac-archivo-detail/:id',
+    loadChildren: () => import('./pages/detecmama-unidad-pac-archivo-detail/detecmama-unidad-pac-archivo-detail.module').then( m => m.DetecmamaUnidadPacArchivoDetailPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'mastos-unidad-pacientes/:id',
+    loadChildren: () => import('./pages/mastos-unidad-pacientes/mastos-unidad-pacientes.module').then( m => m.MastosUnidadPacientesPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'mastos-unidad-pacientes-detail/:id',
+    loadChildren: () => import('./pages/mastos-unidad-pacientes-detail/mastos-unidad-pacientes-detail.module').then( m => m.MastosUnidadPacientesDetailPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'mastos-unidad-pac-archivo/:id',
+    loadChildren: () => import('./pages/mastos-unidad-pac-archivo/mastos-unidad-pac-archivo.module').then( m => m.MastosUnidadPacArchivoPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'mastos-unidad-pac-archivo-detail/:id',
+    loadChildren: () => import('./pages/mastos-unidad-pac-archivo-detail/mastos-unidad-pac-archivo-detail.module').then( m => m.MastosUnidadPacArchivoDetailPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'colpos-unidad-pacientes/:id',
+    loadChildren: () => import('./pages/colpos-unidad-pacientes/colpos-unidad-pacientes.module').then( m => m.ColposUnidadPacientesPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'colpos-unidad-pacientes-detail/:id',
+    loadChildren: () => import('./pages/colpos-unidad-pacientes-detail/colpos-unidad-pacientes-detail.module').then( m => m.ColposUnidadPacientesDetailPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'colpos-unidad-pac-archivo/:id',
+    loadChildren: () => import('./pages/colpos-unidad-pac-archivo/colpos-unidad-pac-archivo.module').then( m => m.ColposUnidadPacArchivoPageModule), canActivate: [IdentityGuard]
+  },
+  {
+    path: 'colpos-unidad-pac-archivo-detail/:id',
+    loadChildren: () => import('./pages/colpos-unidad-pac-archivo-detail/colpos-unidad-pac-archivo-detail.module').then( m => m.ColposUnidadPacArchivoDetailPageModule), canActivate: [IdentityGuard]
   }
   
 ];

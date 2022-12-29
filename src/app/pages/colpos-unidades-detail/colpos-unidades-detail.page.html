@@ -4,6 +4,9 @@
       <!-- <ion-menu-button></ion-menu-button> -->
       <ion-back-button  defaultHref="/colpos-unidades"></ion-back-button>
     </ion-buttons>
+    <ion-button fill="clear" slot="end"  [routerLink]="['/colpos-unidad-pacientes',id]" routerDirection="root">
+      <ion-icon class="icontoolbar"  name="person" size="large" ></ion-icon>
+    </ion-button>
     <ion-title >
       {{title}}
     </ion-title>

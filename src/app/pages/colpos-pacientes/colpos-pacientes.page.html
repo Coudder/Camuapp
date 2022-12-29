@@ -27,7 +27,7 @@
 
 <ion-content fullscreen="true">
    <!-- ion skeleton start -->
-   <ion-list *ngIf="loading">
+   <ion-list *ngIf="loading; else loadData">
     <ion-item  >
       
       <ion-thumbnail slot="start">
@@ -101,21 +101,28 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  <!-- ion skeleton ends -->
-  <ion-list  *ngIf="!loading">
-    <ion-item *ngFor="let pac of datos | filtropac:busqueda "  [routerLink]=" ['/colpos-pacientes-detail',pac.no]"  >
-    <ion-icon name="person" size="large" class="iconperson"></ion-icon>
-    <ion-label  >
-     
-      <h2> {{pac.nombre}} </h2>
-      <p>Sicam: {{pac.sicam}} </p>
-      <p> {{pac.unidadMedica}} </p>
-      <!-- <p *ngIf="pac.dxCito != '' ">Tiene Resultado</p> -->
-      <span *ngIf="pac.alta == '1-SI'"><ion-icon color="success"  name="checkmark-circle-outline"></ion-icon></span>
-      <!-- <span *ngIf="pac.alta == '2-NO'"><ion-icon color="warning"  name="close-circle-outline"></ion-icon></span> -->
+
+  <ng-template #loadData>
     
-    </ion-label>
-    </ion-item>
-  </ion-list>
+    <ion-list>
+      <ion-item *ngFor="let pac of datos | filtropac:busqueda "  [routerLink]=" ['/colpos-pacientes-detail',pac.no]"  routerDirection ="root" >
+      <ion-icon name="person" size="large" class="iconperson"></ion-icon>
+      <ion-label  >
+       
+        <h2> {{pac.nombre}} </h2>
+        <p>Sicam: {{pac.sicam}} </p>
+        <p> {{pac.unidadMedica}} </p>
+        <!-- <p *ngIf="pac.dxCito != '' ">Tiene Resultado</p> -->
+        <span *ngIf="pac.alta == '1-SI'"><ion-icon color="success"  name="checkmark-circle-outline"></ion-icon></span>
+        <!-- <span *ngIf="pac.alta == '2-NO'"><ion-icon color="warning"  name="close-circle-outline"></ion-icon></span> -->
+      
+      </ion-label>
+      </ion-item>
+    </ion-list>
+
+  </ng-template>
+  
+
+  <!-- ion skeleton ends -->
 
 </ion-content>

@@ -45,7 +45,7 @@ export class CitoUnidadesPage implements OnInit {
         response => {
           if(response.status ='success'){
             this.unidades = response.unidades;
-           // console.log(this.unidades);
+            //console.log(this.unidades);
             
           }
 

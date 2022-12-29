@@ -132,7 +132,7 @@
   </ion-list>
 
   <ion-list *ngIf="allyears" >
-    <ion-item *ngFor="let pac of datos | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of datos | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root"  >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -146,7 +146,7 @@
   </ion-list>   
 
   <ion-list *ngIf="anio2019">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root" >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -160,7 +160,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2020">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root" >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -174,7 +174,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2021">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root" >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -188,7 +188,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2022">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root" >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -202,7 +202,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2023">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root" >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -216,7 +216,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2024">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  routerDirection ="root">
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -230,7 +230,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2025">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  routerDirection ="root">
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -244,7 +244,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2026">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root" >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -258,7 +258,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2027">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root" >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -272,7 +272,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2028">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root"  >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -286,7 +286,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2029">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root" >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>
@@ -300,7 +300,7 @@
   </ion-list>
 
   <ion-list *ngIf="anio2030">
-    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]"  >
+    <ion-item *ngFor="let pac of yearFiltrado | filtropac:busqueda " [routerLink]=" ['/vphs-pac-archivo-detail',pac.no]" routerDirection ="root" >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
         <h2> {{pac.nombre}} </h2>

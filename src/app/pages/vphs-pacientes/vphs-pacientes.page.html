@@ -7,7 +7,7 @@
     <ion-title >
       {{title}}
     </ion-title>
-    <ion-button fill="clear"  slot="end"  [routerLink]="['/vphs-pac-archivo']">
+    <ion-button fill="clear"  slot="end"  [routerLink]="['/vphs-pac-archivo']" routerDirection ="root">
       <ion-icon class="icontoolbar" name="file-tray-full" size="large" ></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -26,7 +26,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngIf="loading">
+  <ion-list *ngIf="loading; else loadData">
     <ion-item  >
       
       <ion-thumbnail slot="start">
@@ -101,8 +101,10 @@
     </ion-item>
   </ion-list>
   
-    <ion-list  *ngIf="!loading">
-      <ion-item *ngFor="let pac of datos | filtropac:busqueda "  [routerLink]=" ['/vphs-pacientes-detail',pac.no]"  >
+  <ng-template #loadData>
+
+    <ion-list>
+      <ion-item *ngFor="let pac of datos | filtropac:busqueda "  [routerLink]=" ['/vphs-pacientes-detail',pac.no]" routerDirection ="root"  >
       <ion-icon name="person" size="large" class="iconperson"></ion-icon>
       <ion-label  >
        
@@ -117,5 +119,10 @@
       </ion-label>
       </ion-item>
     </ion-list>
+
+
+  </ng-template>
+  
+
  
 </ion-content>

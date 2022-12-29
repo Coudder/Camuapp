@@ -118,7 +118,8 @@ filterPaciente = '';
       });
       this.datos = datos;
       console.log(this.datos);
-      
+      this.numCitos = this.datos.length; 
+
       this.loading = false;
     }, error => {
       console.log(<any>error);

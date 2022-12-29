@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header  [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
       <!-- <ion-menu-button></ion-menu-button> -->
@@ -9,7 +9,7 @@
     </ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <div class="busqueda">
+   
       <ion-searchbar  
       class="ion-text-uppercase"
       placeholder ="Busqueda..."
@@ -18,7 +18,6 @@
     >
     </ion-searchbar>
 
-    </div>  
    
   </ion-toolbar>
   
@@ -28,9 +27,9 @@
 
 <!-- <ion-spinner name = "bubbles"color="success" class="loading" *ngIf="loading"></ion-spinner> -->
 
-<ion-content fullscreen>
+<ion-content fullscreen="true">
   <!-- skeleton load -->
-  <ion-list *ngIf="loading">
+  <ion-list *ngIf="loading; else loadData">
     <ion-item  >
       
       <ion-thumbnail slot="start">
@@ -81,16 +80,22 @@
     </ion-item>
   </ion-list>
 
+<ng-template #loadData>
+
+  <ion-list>
+    <ion-item *ngFor="let uni of unidades | filtroUni:busqueda" [routerLink]="['/cito-unidades-detail',uni.id] " routerDirection ="root" >
+      <ion-icon name="storefront" class="iconuni"></ion-icon>
+      <ion-label>
+        <h2> {{uni.nombre_unidad}} </h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+</ng-template>
+
 
 <!-- p mensaje -->
-<ion-list *ngIf="!loading">
-  <ion-item *ngFor="let uni of unidades | filtroUni:busqueda" [routerLink]="['/cito-unidades-detail',uni.id] " >
-    <ion-icon name="storefront" class="iconuni"></ion-icon>
-    <ion-label>
-      <h2> {{uni.nombre_unidad}} </h2>
-    </ion-label>
-  </ion-item>
-</ion-list>
 </ion-content>
 
 

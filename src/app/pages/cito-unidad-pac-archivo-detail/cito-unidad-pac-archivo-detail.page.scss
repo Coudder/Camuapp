@@ -1,0 +1,48 @@
+.bold {
+    font-weight: bold;
+  }
+  
+  .cardh{
+    background-color: #099;
+  }
+  
+  .titulo{
+  color: white;
+  }
+  
+  .item{
+  background-color:none;
+  border-color: none;
+  --border-style: none;
+  
+  }
+  
+  ion-spinner {
+    display: block;
+    margin: auto;
+    transform: scale(3);
+    color: #099;
+  }
+  
+  .bg{
+    --background-color:#008B8B !important ;
+    --background: #008B8B !important;
+  }
+  
+  ion-toolbar{
+    //--background: linear-gradient(to right, #051937, #003658, #005674, #00778a, #009999);
+    --background:  linear-gradient(to right, #035959, #036868, #027878, #018888, #009999);
+  
+    color:white;
+  }
+  
+  .icontoolbar{
+    color: white;
+  }
+  
+  .cardheaderscito{
+    //--background: linear-gradient(to right, #051937, #003658, #005674, #00778a, #009999);
+    --background:  linear-gradient(to right, #035959, #036868, #027878, #018888, #009999);
+    color:white;
+  }
+  
